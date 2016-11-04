@@ -1,0 +1,37 @@
+{% extends "webpage/base.html" %}
+{% block Titel %}Edit Places{% endblock %}
+
+{% block content %}
+{% if object_list %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default panel-fixed" >
+			<div class="panel-heading" style="text-align:center;">
+				<h3>Alternative names</h3><a href="{% url 'places:alternativenames_create' %}">(add another Name)</a>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+						</th>
+					</thead>
+					<tbody>
+						{% for object in object_list %}
+						<tr>
+							<td><a href="{% url 'places:alternativenames_edit' pk=object.id %}">{{ object }}</a></td>
+						</tr>
+						{% endfor %}
+					</tbody>	
+				</table>					
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<h1>no names created yet<h1>
+
+<h2> want to change this? <a href="{% url 'places:alternativenames_create' %}">click me</a>
+{% endif %}
+
+{% endblock %}
