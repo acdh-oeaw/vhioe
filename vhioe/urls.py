@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('webpage.urls', namespace='webpage')),
+    url(r'^entities/', include('entities.urls', namespace='entities')),
     url(r'^datamodel/', include('django_spaghetti.urls', namespace='datamodel')),
 ]

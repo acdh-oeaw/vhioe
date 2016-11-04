@@ -1,0 +1,51 @@
+{% extends "webpage/base.html" %}
+{% block Titel %} See all Volumes {% endblock %}
+{% block scriptHeader %}
+<style type="text/css">
+	.panel-fixed {
+    position: fixed;
+	}
+</style>
+{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row">
+	<div class="col-md-2">
+		<div class="panel panel-default panel-fixed">
+			<div class="panel-heading">
+				<h3>Entität<br/>hinzufügen</h3>
+			</div>
+			<div class="panel-body">
+				<a onclick='popupCreateObject("{% url 'admin:entities_archiv_add' %}")'>Archiv</a><br/>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1>Geschäftsbuch 
+					{% if instance %}
+					bearbeiten
+					{% else %}
+					anlegen
+					{% endif %}
+				</h1>
+			</div>
+			<div class="panel-body">
+				{% crispy form %}
+				{% if instance %}
+					<a class ="btn btn-danger btn-sm" href="{% url 'entities:band_delete' pk=instance.id %}">delete</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+	function popupCreateObject(url) {
+		var MyWindow = window.open(url,"","width=500, height=500");
+	};
+</script>
+{% endblock %}

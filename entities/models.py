@@ -75,9 +75,9 @@ class Band(models.Model):
         Archiv, blank=True, null=True, max_length=150, help_text="Name des Archives")
     bestand = models.CharField(
         blank=True, null=True, max_length=150, help_text="Bestandsbezeichnung")
+    jahr = models.PositiveIntegerField(blank=True, null=True, help_text="Jahr")
     signatur = models.CharField(
         unique=True, help_text="Archivkürzel_Bestand_Jahr(_Distinktionszeichen)", max_length=250)
-    jahr = models.PositiveIntegerField(blank=True, null=True, help_text="Jahr")
 
     def __str__(self):
         return "{}".format(self.signatur)

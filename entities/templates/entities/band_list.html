@@ -1,0 +1,36 @@
+{% extends "webpage/base.html" %}
+{% block Titel %} See all Volumes {% endblock %}
+{% block content %}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h1>All Volumes</h1>
+		<div>
+			<a class="btn btn-primary btn-lg" href="{% url 'entities:band_create' %}">create new Volume</a>
+		</div>
+	</div>
+	<div class="panel-body">
+		{% if object_list %}
+		<table class="table table-striped">
+			<thead>
+				<th>Archiv</th>
+				<th>Bestand</th>
+				<th>Signatur</th>
+				<th>Jahr</th>
+			</thead>
+			<tbody>
+			{% for object in object_list %}
+				<tr>
+					<td>{{ object.archiv }}</td>
+					<td>{{ object.bestand }}</td>
+					<td>
+						<a href="{% url 'entities:band_edit' pk=object.id %}">{{ object.signatur }}</a></td>
+					<td>{{ object.jahr }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
