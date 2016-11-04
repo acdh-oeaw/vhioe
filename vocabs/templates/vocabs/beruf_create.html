@@ -1,5 +1,5 @@
 {% extends "webpage/base.html" %}
-{% block Titel %} Create/Modify Volumes {% endblock %}
+{% block Titel %} Create/Modify Entities {% endblock %}
 {% block scriptHeader %}
 
 {% endblock %}
@@ -7,21 +7,10 @@
 
 {% load crispy_forms_tags %}
 <div class="row">
-	<div class="col-md-2">
-		<div class="panel panel-default panel-fixed">
-			<div class="panel-heading">
-				<h3>Entität<br/>hinzufügen</h3>
-			</div>
-			<div class="panel-body">
-				<a onclick='popupCreateObject("{% url 'admin:entities_archiv_add' %}")'>Archiv</a><br/>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-1"></div>
 	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h1>Geschäftsbuch 
+				<h1>Vocabular anlegen 
 					{% if instance %}
 					bearbeiten
 					{% else %}
@@ -38,9 +27,5 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	function popupCreateObject(url) {
-		var MyWindow = window.open(url,"","width=500, height=500");
-	};
-</script>
 {% endblock %}
+
