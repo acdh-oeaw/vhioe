@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_spaghetti',
     'webpage',
     'vocabs',
     'entities',
@@ -39,6 +40,12 @@ INSTALLED_APPS = [
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap3"
+
+SPAGHETTI_SAUCE = {
+    'apps': ['entities', 'entries', 'labels', 'palces', 'vocabs'],
+    'show_fields': False,
+    'exclude': {'auth': ['user']}
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
