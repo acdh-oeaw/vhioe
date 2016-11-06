@@ -33,6 +33,25 @@ class SkosNamespace(models.Model):
         return "{}".format(self.prefix)
 
 
+class SkosConceptScheme(models.Model):
+    dc_title = models.CharField(max_length=300, blank=True)
+    namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
+    dct_creator = models.URLField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.namespace is None:
+            temp_namespace, _ = SkosNamespace.objects.get_or_create(
+                namespace=DEFAULT_NAMESPACE, prefix=DEFAULT_PEFIX)
+            temp_namespace.save()
+            self.namespace = temp_namespace
+        else:
+            pass
+        super(SkosConceptScheme, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('vocabs:skosconceptscheme_detail', kwargs={'pk': self.id})
+
+
 class SkosLabel(models.Model):
     label = models.CharField(max_length=100, blank=True, help_text="The entities label or name.")
     label_type = models.CharField(
@@ -55,6 +74,7 @@ class SkosConcept(models.Model):
     label = models.ManyToManyField(SkosLabel, blank=True)
     notation = models.CharField(max_length=300, blank=True, unique=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
+    scheme = models.ManyToManyField(SkosConceptScheme, blank=True)
 
     def save(self, *args, **kwargs):
         temp_notation = slugify(self.pref_label, allow_unicode=True)

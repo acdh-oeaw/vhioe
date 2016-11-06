@@ -1,0 +1,14 @@
+{% extends "webpage/base.html" %}
+
+{% block content %}
+
+<h1>Concept Schemes</h1>
+<a class="btn btn-primary" href="{% url 'vocabs:skosconceptscheme_create' %}" role="button">create Scheme</a>
+
+
+{% for object in object_list %}
+    <li>
+        <a href="{% url 'vocabs:skosconceptscheme_update' pk=object.id %}">{{ object }}</a></li>
+{% endfor %}
+
+{% endblock %}

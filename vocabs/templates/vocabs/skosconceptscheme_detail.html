@@ -1,0 +1,22 @@
+{% extends "webpage/base.html" %}
+
+{% block content %}
+
+<h1>{{ object.pref_label}}</h1>
+
+<ul>
+    <li> {{ object.pref_label_lang}}</li>
+    <li> {{ object.definition}}</li>
+    <li> {{ object.definition_lang}}</li>
+    {% for x in object.label.all %}
+        <li>{{ x }}</li>
+    {% endfor %}
+    <li>{{ object.namespace}}</li>
+    <li>{{ object.prefix }}</li>
+    <li>{{ object.label }}</li>
+</ul>
+
+{% if user.is_authenticated %}
+<a class="btn btn-primary" href="{% url 'vocabs:skosconcept_update' pk=object.id %}" role="button">edit concept</a>
+{% endif %}
+{% endblock %}
