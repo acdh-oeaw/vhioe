@@ -1,0 +1,12 @@
+{% extends "webpage/base.html" %}
+
+{% block content %}
+
+<h1>Einträge</h1>
+
+{% for object in object_list %}
+    <li>
+        <a href="{% url 'entries:eintrag_detail' pk=object.id %}">{{ object }}</a></li>
+{% endfor %}
+
+{% endblock %}

@@ -1,16 +1,16 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from .models import SkosConcept
+from .models import Eintrag
 
 
-class SkosConceptForm(forms.ModelForm):
+class EintragForm(forms.ModelForm):
     class Meta:
-        model = SkosConcept
+        model = Eintrag
         fields = "__all__"
 
     def __init__(self, *args, **kwargs):
-        super(SkosConceptForm, self).__init__(*args, **kwargs)
+        super(EintragForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = 'form-horizontal'

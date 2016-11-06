@@ -1,6 +1,7 @@
 from django.db import models
-from entities.models import *
 from vocabs.models import SkosConcept
+from django.core.urlresolvers import reverse
+from entities.models import *
 
 
 class Eintrag(models.Model):
@@ -9,8 +10,7 @@ class Eintrag(models.Model):
 
     band = models.ForeignKey(Band, blank=True, null=True, help_text="Band")
     aktenzahl = models.CharField(
-        primary_key=True, unique=True, max_length=150,
-        help_text="Kombination aus Archivkürzel_Jahr_Aktenzahl")
+        max_length=150, help_text="Kombination aus Archivkürzel_Jahr_Aktenzahl")
     faksimile = models.CharField(
         blank=True, null=True, max_length=150,
         help_text="Name der Datei, auf der das Faksimile gespeichert ist.")
@@ -81,3 +81,9 @@ class Eintrag(models.Model):
     ablage = models.CharField(
         blank=True, null=True, max_length=100,
         help_text="Ablageplaninformation")
+
+    def __str__(self):
+        return "{}".format(self.id)
+
+    def get_absolute_url(self):
+        return reverse('entries:eintrag_detail', kwargs={'pk': self.id})
