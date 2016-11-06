@@ -19,8 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('webpage.urls', namespace='webpage')),
-    url(r'^entities/', include('entities.urls', namespace='entities')),
     url(r'^vocabs/', include('vocabs.urls', namespace='vocabs')),
+    url(r'^entities/', include('entities.urls', namespace='entities')),
     url(r'^places/', include('places.urls', namespace='places')),
     url(r'^datamodel/', include('django_spaghetti.urls', namespace='datamodel')),
 ]

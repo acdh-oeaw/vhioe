@@ -1,5 +1,5 @@
 from django.db import models
-from labels.models import Label
+from vocabs.models import SkosLabel
 
 
 class Place(models.Model):
@@ -8,9 +8,9 @@ class Place(models.Model):
     name = models.CharField(
         max_length=250, blank=True, help_text="Normalisierte, gegenwärtige Ortsbezeichnung")
     alternative_name = models.ManyToManyField(
-        Label, max_length=250, blank=True,
+        SkosLabel, max_length=250, blank=True,
         help_text="Alternative names")
-    geonames_id = models.CharField(max_length=50, blank=True, help_text="GND-ID")
+    geonames_id = models.CharField(max_length=50, blank=True)
     lat = models.DecimalField(max_digits=20, decimal_places=12, blank=True, null=True)
     lng = models.DecimalField(max_digits=20, decimal_places=12, blank=True, null=True)
 

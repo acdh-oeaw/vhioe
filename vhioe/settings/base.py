@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'webpage',
     'vocabs',
     'entities',
-    'labels',
     'places',
     'entries',
 ]
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 SPAGHETTI_SAUCE = {
-    'apps': ['entities', 'entries', 'labels', 'palces', 'vocabs'],
+    'apps': ['entities', 'entries', 'places', 'vocabs'],
     'show_fields': False,
     'exclude': {'auth': ['user']}
 }

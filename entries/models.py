@@ -1,6 +1,6 @@
 from django.db import models
 from entities.models import *
-from vocabs.models import *
+from vocabs.models import SkosConcept
 
 
 class Eintrag(models.Model):
@@ -26,19 +26,22 @@ class Eintrag(models.Model):
         null=True, default=False,
         help_text="Handelt es sich beim 'Einbringer' um eine Person (Ja/Nein).")
     einbringer_berufsgruppe = models.ForeignKey(
-        Beruf, blank=True, null=True,
+        SkosConcept, blank=True, null=True, related_name="einbringer_beruf_skos",
         help_text="Berufsgruppe, welcher die einbringede Person zugeordnet werde kann")
     einbringer_geschlecht = models.ForeignKey(
-        EinbringerGechlecht, blank=True, null=True, help_text="PLEASEPROVIDESOMEHELPTEXT")
+        SkosConcept, blank=True, null=True, related_name="einbringer_geschlecht_skos",
+        help_text="PLEASEPROVIDESOMEHELPTEXT")
     klient_person = models.ManyToManyField(
         Person, blank=True,
         help_text="Person, von der Eingangsstück ausgeht",
         related_name="person_klient",
         verbose_name="Einbringer (Person)")
     eingangsart = models.ForeignKey(
-        Eingangsart, blank=True, null=True, help_text="Art des Eingangs")
+        SkosConcept, blank=True, null=True, help_text="Art des Eingangs",
+        related_name="eingangsart_skos")
     geschaeftsbereich = models.ForeignKey(
-        Geschaeftsbereich, blank=True, null=True, help_text="Art des Eingangs")
+        SkosConcept, blank=True, null=True, help_text="Art des Eingangs",
+        related_name="geschaeftsbereich_skos")
     aktenzahl_anfragende_behoerde = models.CharField(
         blank=True, null=True, max_length=150,
         help_text="Aktenzahl des Eingangsstücks bei der einbringenden Behörde",
@@ -55,7 +58,7 @@ class Eintrag(models.Model):
         blank=True, null=True,
         help_text="Zur Beantwortung vorgegebene Frist. Bitte im Format YYYY-MM-DD angeben")
     erledigungs_art = models.ForeignKey(
-        Erledigungsart, blank=True, null=True,
+        SkosConcept, blank=True, null=True, related_name="erledigungs_art_skos",
         help_text="Art der Erledigung durch Bezirksbehörde.")
     erledigende_institution = models.ManyToManyField(
         Institution, blank=True, help_text="Institution, an die sich Erledigung richtet",

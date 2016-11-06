@@ -1,5 +1,5 @@
 from django.db import models
-from vocabs.models import Beruf
+from vocabs.models import SkosConcept
 from places.models import Place
 
 
@@ -45,7 +45,7 @@ class Person(EntityBaseClass):
         blank=True, null=True, max_length=150, help_text="Sex", choices=GENDER_CHOICES)
     vorname = models.CharField(
         blank=True, null=True, max_length=150, help_text="Vorname des Klienten")
-    beruf = models.ForeignKey(Beruf, blank=True, null=True)
+    beruf = models.ForeignKey(SkosConcept, blank=True, null=True)
 
     def __str__(self):
         return "{} | {} | {}, {} | {}".format(

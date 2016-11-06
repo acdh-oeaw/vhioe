@@ -1,0 +1,12 @@
+{% extends "webpage/base.html" %}
+
+{% block content %}
+
+<h1>Vocabs</h1>
+
+{% for concept in object_list %}
+    <li>
+        <a href="{% url 'vocabs:skosconcept_detail' pk=concept.id %}">{{ concept }}</a></li>
+{% endfor %}
+
+{% endblock %}
