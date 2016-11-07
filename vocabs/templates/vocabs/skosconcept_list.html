@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>Vocabs</h1>
+<h1>Skos Coneptes</h1>
 <a class="btn btn-primary" href="{% url 'vocabs:skosconcept_create' %}" role="button">create concept</a>
 
 
-{% for concept in object_list %}
+{% for object in object_list %}
     <li>
-        <a href="{% url 'vocabs:skosconcept_detail' pk=concept.id %}">{{ concept }}</a></li>
+        <a href="{% url 'vocabs:skosconcept_detail' pk=object.id %}">{{ object }}</a></li>
 {% endfor %}
 
 {% endblock %}

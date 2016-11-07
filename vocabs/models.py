@@ -52,7 +52,7 @@ class SkosConceptScheme(models.Model):
         return reverse('vocabs:skosconceptscheme_detail', kwargs={'pk': self.id})
 
     def __str__(self):
-        return "{} ()".format(self.dc_title, self.namespace)
+        return "{}:{}".format(self.namespace, self.dc_title)
 
 
 class SkosLabel(models.Model):
@@ -81,6 +81,11 @@ class SkosConcept(models.Model):
     label = models.ManyToManyField(SkosLabel, blank=True)
     notation = models.CharField(max_length=300, blank=True, unique=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
+    skos_broader = models.ManyToManyField('SkosConcept', blank=True, related_name="narrower")
+    skos_narrower = models.ManyToManyField('SkosConcept', blank=True, related_name="broader")
+    skos_related = models.ManyToManyField('SkosConcept', blank=True, related_name="related")
+    skos_broadmatch = models.ManyToManyField('SkosConcept', blank=True, related_name="broadmatch")
+    skos_exactmatch = models.ManyToManyField('SkosConcept', blank=True, related_name="exactmatch")
 
     def save(self, *args, **kwargs):
         temp_notation = slugify(self.pref_label, allow_unicode=True)
@@ -106,28 +111,3 @@ class SkosConcept(models.Model):
     def get_absolute_url(self):
         return reverse('vocabs:skosconcept_detail', kwargs={'pk': self.id})
 
-
-class SkosRelation(models.Model):
-    concept_a = models.ForeignKey(SkosConcept, related_name="first_concept")
-    concept_b = models.ForeignKey(SkosConcept, related_name="second_concept")
-    relation_type = models.CharField(choices=RELATION_TYPES, max_length=30)
-    owl_inverseOf = models.CharField(blank=True, null=True, max_length=30)
-
-    def save(self, *args, **kwargs):
-        if self.relation_type == "narrower":
-            self.owl_inverseOf = "broader"
-        elif self.relation_type == "broader":
-            self.owl_inverseOf = "narrower"
-        elif self.relation_type == "related":
-            self.owl_inverseOf = "related"
-        elif self.relation_type == "broadMatch":
-            self.owl_inverseOf = "broadMatch"
-        elif self.relation_type == "relatedMatch":
-            self.owl_inverseOf = "relatedMatch"
-        elif self.relation_type == "exactMatch":
-            self.owl_inverseOf = "exactMatch"
-        super(SkosRelation, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return "{} is {} as {}".format(
-            self.concept_a, self.relation_type, self.concept_b)

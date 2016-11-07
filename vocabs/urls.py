@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from . import views
 from . import dal_views
-from .models import SkosLabel, SkosConceptScheme
+from .models import SkosLabel, SkosConcept, SkosConceptScheme
 
 urlpatterns = [
     url(r'^$', views.SkosConceptListView.as_view(), name='skosconcept_list'),
@@ -39,5 +39,11 @@ urlpatterns = [
             model=SkosConceptScheme,
             create_field='dc_title',),
         name='skosconceptscheme-autocomplete',
+    ),
+    url(
+        r'^skosconcept-autocomplete/$', dal_views.SkosConceptAC.as_view(
+            model=SkosConcept,
+            create_field='pref_label',),
+        name='skosconcept-autocomplete',
     ),
 ]

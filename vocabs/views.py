@@ -41,6 +41,11 @@ class SkosConceptSchemeDetailView(DetailView):
     model = SkosConceptScheme
     template_name = 'vocabs/skosconceptscheme_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(SkosConceptSchemeDetailView, self).get_context_data(**kwargs)
+        context["concepts"] = SkosConcept.objects.filter(scheme=self.kwargs.get('pk'))
+        return context
+
 
 class SkosConceptSchemeListView(ListView):
 
@@ -52,14 +57,14 @@ class SkosConceptSchemeCreate(CreateView):
 
     model = SkosConceptScheme
     form_class = SkosConceptSchemeForm
-    template_name = 'vocabs/skosconcept_create.html'
+    template_name = 'vocabs/skosconceptscheme_create.html'
 
 
 class SkosConceptSchemeUpdate(UpdateView):
 
     model = SkosConceptScheme
     form_class = SkosConceptSchemeForm
-    template_name = 'vocabs/skosconcept_create.html'
+    template_name = 'vocabs/skosconceptscheme_create.html'
 
 
 ###################################################
