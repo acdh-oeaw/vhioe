@@ -86,6 +86,7 @@ class SkosConcept(models.Model):
     skos_related = models.ManyToManyField('SkosConcept', blank=True, related_name="related")
     skos_broadmatch = models.ManyToManyField('SkosConcept', blank=True, related_name="broadmatch")
     skos_exactmatch = models.ManyToManyField('SkosConcept', blank=True, related_name="exactmatch")
+    legacy_id = models.CharField(max_length=200, blank=True)
 
     def save(self, *args, **kwargs):
         temp_notation = slugify(self.pref_label, allow_unicode=True)
@@ -110,4 +111,3 @@ class SkosConcept(models.Model):
 
     def get_absolute_url(self):
         return reverse('vocabs:skosconcept_detail', kwargs={'pk': self.id})
-
