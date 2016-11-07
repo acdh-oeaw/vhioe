@@ -10,7 +10,8 @@ class SkosConceptForm(forms.ModelForm):
         model = SkosConcept
         fields = "__all__"
         widgets = {
-            'label': autocomplete.ModelSelect2Multiple(url='vocabs:skoslabel-autocomplete')
+            'label': autocomplete.ModelSelect2Multiple(url='vocabs:skoslabel-autocomplete'),
+            'scheme': autocomplete.ModelSelect2Multiple(url='vocabs:skosconceptscheme-autocomplete')
         }
 
     def __init__(self, *args, **kwargs):
