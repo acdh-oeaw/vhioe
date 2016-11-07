@@ -5,13 +5,27 @@
 {% load crispy_forms_tags %}
 
 <div class="container">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h1>Create/Edit Concept</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Create/Edit Concept</h1>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Concept</div>
+                        <div class="panel-body">{% crispy form %}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Relations</div>
+                        <div class="panel-body">place to add/edit/delete relations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
-         {% crispy form %}
-    </div>
-</div>
 </div>
 {% endblock content %}
+

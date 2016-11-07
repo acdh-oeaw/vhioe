@@ -1,8 +1,8 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
-from .models import SkosConcept, SkosConceptScheme
-from .forms import SkosConceptForm, SkosConceptSchemeForm
+from .models import SkosConcept, SkosConceptScheme, SkosLabel
+from .forms import SkosConceptForm, SkosConceptSchemeForm, SkosLabelForm
 
 
 class SkosConceptDetailView(DetailView):
@@ -60,3 +60,34 @@ class SkosConceptSchemeUpdate(UpdateView):
     model = SkosConceptScheme
     form_class = SkosConceptSchemeForm
     template_name = 'vocabs/skosconcept_create.html'
+
+
+###################################################
+# SkosLabel
+###################################################
+
+
+class SkosLabelDetailView(DetailView):
+
+    model = SkosLabel
+    template_name = 'vocabs/skoslabel_detail.html'
+
+
+class SkosLabelListView(ListView):
+
+    model = SkosLabel
+    template_name = 'vocabs/skoslabel_list.html'
+
+
+class SkosLabelCreate(CreateView):
+
+    model = SkosLabel
+    template_name = 'vocabs/skoslabel_create.html'
+    form_class = SkosLabelForm
+
+
+class SkosLabelUpdate(UpdateView):
+
+    model = SkosLabel
+    form_class = SkosLabelForm
+    template_name = 'vocabs/skoslabel_create.html'

@@ -81,11 +81,24 @@
                     <li>
                         <a href="{% url 'places:place_list' %}">Places</a>
                     </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vocabs Curation
+                  <span class="caret"/>
+                  </a>
+                  <ul class="dropdown-menu">
                     <li>
-                        <a href="{% url 'vocabs:skosconcept_list' %}">Vocabs</a>
+                        <a href="{% url 'vocabs:skosconceptscheme_list' %}">Concept Schemes</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'vocabs:skosconcept_list' %}">Concepts</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'vocabs:skoslabel_list' %}">Labels</a>
                     </li>
                   </ul>
-              </li>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">

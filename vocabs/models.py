@@ -51,6 +51,9 @@ class SkosConceptScheme(models.Model):
     def get_absolute_url(self):
         return reverse('vocabs:skosconceptscheme_detail', kwargs={'pk': self.id})
 
+    def __str__(self):
+        return "{} ()".format(self.dc_title, self.namespace)
+
 
 class SkosLabel(models.Model):
     label = models.CharField(max_length=100, blank=True, help_text="The entities label or name.")
@@ -63,18 +66,21 @@ class SkosLabel(models.Model):
         if self.label_type != "":
             return "{} @{} ({})".format(self.label, self.isoCode, self.label_type)
         else:
-            return "{} @{})".format(self.label, self.isoCode)
+            return "{} @{}".format(self.label, self.isoCode)
+
+    def get_absolute_url(self):
+        return reverse('vocabs:skoslabel_detail', kwargs={'pk': self.id})
 
 
 class SkosConcept(models.Model):
     pref_label = models.CharField(max_length=300, blank=True)
     pref_label_lang = models.CharField(max_length=3, blank=True, default="eng")
+    scheme = models.ManyToManyField(SkosConceptScheme, blank=True)
     definition = models.TextField(blank=True)
     definition_lang = models.CharField(max_length=3, blank=True, default="eng")
     label = models.ManyToManyField(SkosLabel, blank=True)
     notation = models.CharField(max_length=300, blank=True, unique=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
-    scheme = models.ManyToManyField(SkosConceptScheme, blank=True)
 
     def save(self, *args, **kwargs):
         temp_notation = slugify(self.pref_label, allow_unicode=True)

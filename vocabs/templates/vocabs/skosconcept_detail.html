@@ -2,18 +2,21 @@
 
 {% block content %}
 
-<h1>{{ object.pref_label}}</h1>
+<h1>{{ object.pref_label}} (@{{ object.pref_label_lang }})</h1>
 
 <ul>
-    <li> {{ object.pref_label_lang}}</li>
-    <li> {{ object.definition}}</li>
-    <li> {{ object.definition_lang}}</li>
-    {% for x in object.label.all %}
-        <li>{{ x }}</li>
-    {% endfor %}
+    {% if object.definition %}
+    <li>
+        definition: {{ object.definition}} (@{{ object.definition_lang}})
+    </li>
+    {% endif %}
+        {% for x in object.label.all %}
+            <li>
+                <a href="{% url 'vocabs:skoslabel_detail' pk=x.id %}">{{ x }}</a>
+            </li>
+        {% endfor %}
     <li>{{ object.namespace}}</li>
     <li>{{ object.prefix }}</li>
-    <li>{{ object.label }}</li>
 </ul>
 
 {% if user.is_authenticated %}
