@@ -37,6 +37,7 @@ class SkosConceptScheme(models.Model):
     dc_title = models.CharField(max_length=300, blank=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
     dct_creator = models.URLField(blank=True)
+    legacy_id = models.CharField(max_length=200, blank=True)
 
     def save(self, *args, **kwargs):
         if self.namespace is None:
@@ -79,7 +80,7 @@ class SkosConcept(models.Model):
     definition = models.TextField(blank=True)
     definition_lang = models.CharField(max_length=3, blank=True, default="eng")
     label = models.ManyToManyField(SkosLabel, blank=True)
-    notation = models.CharField(max_length=300, blank=True, unique=True)
+    notation = models.CharField(max_length=300, blank=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
     skos_broader = models.ManyToManyField('SkosConcept', blank=True, related_name="narrower")
     skos_narrower = models.ManyToManyField('SkosConcept', blank=True, related_name="broader")
@@ -89,12 +90,15 @@ class SkosConcept(models.Model):
     legacy_id = models.CharField(max_length=200, blank=True)
 
     def save(self, *args, **kwargs):
-        temp_notation = slugify(self.pref_label, allow_unicode=True)
-        concepts = len(SkosConcept.objects.filter(notation=temp_notation))
-        if concepts < 1:
-            self.notation = temp_notation
+        if self.notation == "":
+            temp_notation = slugify(self.pref_label, allow_unicode=True)
+            concepts = len(SkosConcept.objects.filter(notation=temp_notation))
+            if concepts < 1:
+                self.notation = temp_notation
+            else:
+                self.notation = "{}-{}".format(temp_notation, concepts)
         else:
-            self.notation = "{}-{}".format(temp_notation, concepts)
+            pass
 
         if self.namespace is None:
             temp_namespace, _ = SkosNamespace.objects.get_or_create(
