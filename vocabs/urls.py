@@ -4,9 +4,10 @@ from . import import_views
 from . import dal_views
 from .models import SkosLabel, SkosConcept, SkosConceptScheme
 
+
 urlpatterns = [
     url(r'^$', views.SkosConceptListView.as_view(), name='skosconcept_list'),
-    url(r'^import/$', import_views.import_skos, name='skosconcept_import'),
+    url(r'^import/$', import_views.import_skos, name='skos_import'),
     url(r'^(?P<pk>[0-9]+)$', views.SkosConceptDetailView.as_view(), name='skosconcept_detail'),
     url(r'^create/$', views.SkosConceptCreate.as_view(), name='skosconcept_create'),
     url(r'^update/(?P<pk>[0-9]+)$', views.SkosConceptUpdate.as_view(), name='skosconcept_update'),

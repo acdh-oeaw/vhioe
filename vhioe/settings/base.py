@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_spaghetti',
     'django_extensions',
+    'rest_framework',
     'webpage',
     'vocabs',
     'entities',
@@ -42,6 +43,11 @@ INSTALLED_APPS = [
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap3"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
+    'PAGE_SIZE': 10
+}
 
 SPAGHETTI_SAUCE = {
     'apps': ['entities', 'entries', 'places', 'vocabs'],

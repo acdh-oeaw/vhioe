@@ -11,3 +11,5 @@ __pycache__/
 /playAndTry.ipynb
 /vhioe/db.sqlite3
 
+/vocabs/data/japbibthesaurus_03.rdf
+/vocabs/data/thepro_rdf.xml
