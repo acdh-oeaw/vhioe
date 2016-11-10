@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 
 
 class RDFRenderer(renderers.BaseRenderer):
-    media_type = 'application/xml+rdf'
+    media_type = 'text/xml'
     format = 'xml'
 
     def render(self, data, media_type=None, renderer_context=None):
