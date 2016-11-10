@@ -1,8 +1,10 @@
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import SkosConcept, SkosConceptScheme, SkosLabel, SkosNamespace
 from .serializers import (
     SkosLabelSerializer, SkosNamespaceSerializer, SkosConceptSchemeSerializer, SkosConceptSerializer
 )
+from .filters import SkosConceptFilter
 
 
 class SkosLabelViewSet(viewsets.ModelViewSet):
@@ -27,3 +29,5 @@ class SkosConceptViewSet(viewsets.ModelViewSet):
 
     queryset = SkosConcept.objects.all()
     serializer_class = SkosConceptSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_class = SkosConceptFilter

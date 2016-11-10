@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_spaghetti',
     'django_extensions',
+    'django_filters',
     'rest_framework',
     'webpage',
     'vocabs',
