@@ -10,6 +10,9 @@
 {% for object in data.results %}
     <rdf:Description rdf:about="{{ object.url|slice:":-12" }}">
         <skos:prefLabel xml:lang="{{ object.pref_label_lang}}">{{ object.pref_label}}</skos:prefLabel>
+        {% for x in object.scheme %}
+            <skos:inScheme rdf:resource="{{x|slice:":-12"}}"/>
+        {% endfor %}
         {% for x in object.skos_narrower %}
             <skos:narrower rdf:resource="{{ x|slice:":-12"  }}"/>
         {% endfor %}
