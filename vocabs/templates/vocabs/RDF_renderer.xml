@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test>
+{% for object in data.results %}
+<item>{{ object }}</item>
+{% endfor %}
+</test>

@@ -1,10 +1,12 @@
 from rest_framework import viewsets
+from rest_framework.renderers import JSONRenderer
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import SkosConcept, SkosConceptScheme, SkosLabel, SkosNamespace
 from .serializers import (
     SkosLabelSerializer, SkosNamespaceSerializer, SkosConceptSchemeSerializer, SkosConceptSerializer
 )
 from .filters import SkosConceptFilter
+from .api_renderers import RDFRenderer
 
 
 class SkosLabelViewSet(viewsets.ModelViewSet):
@@ -31,3 +33,5 @@ class SkosConceptViewSet(viewsets.ModelViewSet):
     serializer_class = SkosConceptSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_class = SkosConceptFilter
+
+    renderer_classes = (JSONRenderer, RDFRenderer,)
