@@ -16,19 +16,19 @@ class EintragForm(forms.ModelForm):
                 url='entities:bearbeiter-autocomplete'),
             'klient_institution': autocomplete.ModelSelect2Multiple(
                 url='entities:institution-autocomplete'),
-            'einbringer_berufsgruppe': autocomplete.ModelSelect2Multiple(
+            'einbringer_berufsgruppe': autocomplete.ModelSelect2(
                 url='vocabs:skosconcept-autocomplete'),
-            'einbringer_geschlecht': autocomplete.ModelSelect2Multiple(
+            'einbringer_geschlecht': autocomplete.ModelSelect2(
                 url='vocabs:skosconcept-autocomplete'),
             'klient_person': autocomplete.ModelSelect2Multiple(
                 url='entities:person-autocomplete'),
-            'eingangsart': autocomplete.ModelSelect2Multiple(
+            'eingangsart': autocomplete.ModelSelect2(
                 url='vocabs:skosconcept-autocomplete'),
-            'geschaeftsbereich': autocomplete.ModelSelect2Multiple(
+            'geschaeftsbereich': autocomplete.ModelSelect2(
                 url='vocabs:skosconcept-autocomplete'),
             'vorakten_erfasst': autocomplete.ModelSelect2Multiple(
                 url='entries:eintrag-autocomplete'),
-            'erledigungs_art': autocomplete.ModelSelect2Multiple(
+            'erledigungs_art': autocomplete.ModelSelect2(
                 url='vocabs:skosconcept-autocomplete'),
             'erledigende_institution': autocomplete.ModelSelect2Multiple(
                 url='entities:institution-autocomplete'),

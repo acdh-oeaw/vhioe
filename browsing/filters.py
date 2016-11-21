@@ -1,5 +1,5 @@
 import django_filters
-from entries.models import Eintrag
+from entries.models import Eintrag, Band
 
 
 django_filters.filters.LOOKUP_TYPES = [
@@ -24,3 +24,9 @@ class EintragListFilter(django_filters.FilterSet):
     class Meta:
         model = Eintrag
         fields = ['band']
+
+
+class BandListFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Band

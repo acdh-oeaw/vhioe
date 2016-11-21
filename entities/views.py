@@ -20,7 +20,7 @@ def band_create(request):
         form = BandForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('entities:baende_list')
+            return redirect('browsing:browse_baende')
         else:
             return render(request, 'entities/band_create.html', {'form': form})
     else:
@@ -34,7 +34,7 @@ def band_edit(request, pk):
         form = BandForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('entities:baende_list')
+            return redirect('browsing:browse_baende')
         else:
             return render(request, 'entities/band_create.html', {'form': form, 'instance': instance})
     else:
@@ -45,4 +45,4 @@ def band_edit(request, pk):
 class BandDelete(DeleteView):
     model = Band
     template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('entities:baende_list')
+    success_url = reverse_lazy('browsing:browse_baende')
