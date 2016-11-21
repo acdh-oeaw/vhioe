@@ -24,7 +24,7 @@ class Archiv(EntityBaseClass):
     """Holds information about the archive"""
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.akronym)
+        return "{}".format(self.akronym)
 
 
 class Institution(EntityBaseClass):
