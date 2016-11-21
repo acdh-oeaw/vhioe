@@ -9,6 +9,7 @@
 
 {% for object in data.results %}
     <rdf:Description rdf:about="{{ object.url|slice:":-12" }}">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:prefLabel xml:lang="{{ object.pref_label_lang}}">{{ object.pref_label}}</skos:prefLabel>
         {% for x in object.scheme %}
             <skos:inScheme rdf:resource="{{x|slice:":-12"}}"/>

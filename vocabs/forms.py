@@ -34,6 +34,8 @@ class SkosConceptForm(forms.ModelForm):
                 url='vocabs:skosconcept-autocomplete'),
             'skos_exactmatch': autocomplete.ModelSelect2Multiple(
                 url='vocabs:skosconcept-autocomplete'),
+            'skos_closematch': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
             'scheme': autocomplete.ModelSelect2Multiple(url='vocabs:skosconceptscheme-autocomplete')
         }
 

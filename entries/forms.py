@@ -1,3 +1,4 @@
+from dal import autocomplete
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -8,6 +9,34 @@ class EintragForm(forms.ModelForm):
     class Meta:
         model = Eintrag
         fields = "__all__"
+        widgets = {
+            'band': autocomplete.ModelSelect2(
+                url='entities:band-autocomplete'),
+            'bearbeiter': autocomplete.ModelSelect2(
+                url='entities:bearbeiter-autocomplete'),
+            'klient_institution': autocomplete.ModelSelect2Multiple(
+                url='entities:institution-autocomplete'),
+            'einbringer_berufsgruppe': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
+            'einbringer_geschlecht': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
+            'klient_person': autocomplete.ModelSelect2Multiple(
+                url='entities:person-autocomplete'),
+            'eingangsart': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
+            'geschaeftsbereich': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
+            'vorakten_erfasst': autocomplete.ModelSelect2Multiple(
+                url='entries:eintrag-autocomplete'),
+            'erledigungs_art': autocomplete.ModelSelect2Multiple(
+                url='vocabs:skosconcept-autocomplete'),
+            'erledigende_institution': autocomplete.ModelSelect2Multiple(
+                url='entities:institution-autocomplete'),
+            'erledigende_person': autocomplete.ModelSelect2Multiple(
+                url='entities:person-autocomplete'),
+            'nachakten_erfasst': autocomplete.ModelSelect2Multiple(
+                url='entries:eintrag-autocomplete'),
+        }
 
     def __init__(self, *args, **kwargs):
         super(EintragForm, self).__init__(*args, **kwargs)

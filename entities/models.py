@@ -23,7 +23,8 @@ class Archiv(EntityBaseClass):
 
     """Holds information about the archive"""
 
-    pass
+    def __str__(self):
+        return "{} ({})".format(self.name, self.akronym)
 
 
 class Institution(EntityBaseClass):
@@ -77,7 +78,7 @@ class Band(models.Model):
         blank=True, null=True, max_length=150, help_text="Bestandsbezeichnung")
     jahr = models.PositiveIntegerField(blank=True, null=True, help_text="Jahr")
     signatur = models.CharField(
-        unique=True, help_text="Archivkürzel_Bestand_Jahr(_Distinktionszeichen)", max_length=250)
+        help_text="Archivkürzel_Bestand_Jahr(_Distinktionszeichen)", max_length=250)
 
     def __str__(self):
-        return "{}".format(self.signatur)
+        return "{}, {}, {}, {}".format(self.archiv, self.bestand, self.jahr, self.signatur)

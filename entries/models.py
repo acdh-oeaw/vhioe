@@ -83,7 +83,7 @@ class Eintrag(models.Model):
         help_text="Ablageplaninformation")
 
     def __str__(self):
-        return "{}".format(self.id)
+        return "{}, {}".format(self.band, self.id)
 
     def get_absolute_url(self):
         return reverse('entries:eintrag_detail', kwargs={'pk': self.id})
