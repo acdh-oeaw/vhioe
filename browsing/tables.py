@@ -15,7 +15,7 @@ class EintragTable(tables.Table):
 
 
 class BandTable(tables.Table):
-    id = tables.LinkColumn('entities:band_edit', args=[A('pk')], verbose_name='Band')
+    id = tables.LinkColumn('entities:band_detail', args=[A('pk')], verbose_name='Band')
     archiv = tables.Column(accessor='archiv', verbose_name="Archiv")
     bestand = tables.Column(accessor='bestand', verbose_name="Bestand")
     jahr = tables.Column(accessor='jahr', verbose_name="Jahr")
