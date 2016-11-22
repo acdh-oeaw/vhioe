@@ -35,7 +35,11 @@ class Institution(EntityBaseClass):
 
     """Holds information about an institution which has to deal with an entry."""
 
-    pass
+    def __str__(self):
+        return "{}".format(self.name)
+
+    def get_absolute_url(self):
+        return reverse('entities:institution_detail', kwargs={'pk': self.id})
 
 
 class Person(EntityBaseClass):

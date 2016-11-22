@@ -3,7 +3,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from .models import Band, Archiv
+from .models import Band, Archiv, Institution
 
 
 class BandForm(forms.ModelForm):
@@ -32,5 +32,20 @@ class ArchivForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ArchivForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Speichern'))
+
+
+class InstitutionForm(forms.ModelForm):
+    class Meta:
+        model = Institution
+        fields = "__all__"
+        widgets = {
+            'ort': autocomplete.ModelSelect2(
+                url='entities:ort-autocomplete'),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(InstitutionForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', 'Speichern'))

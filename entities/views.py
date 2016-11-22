@@ -2,8 +2,8 @@ from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from .forms import BandForm, ArchivForm
-from .models import Band, Archiv
+from .forms import BandForm, ArchivForm, InstitutionForm
+from .models import Band, Archiv, Institution
 
 
 class BandListView(generic.ListView):
@@ -40,6 +40,9 @@ class BandDelete(DeleteView):
     success_url = reverse_lazy('browsing:browse_baende')
 
 
+# Archiv
+
+
 class ArchivDetailView(DetailView):
 
     model = Archiv
@@ -63,3 +66,31 @@ class ArchivDelete(DeleteView):
     model = Archiv
     template_name = 'webpage/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_archivs')
+
+
+# Institution
+
+
+class InstitutionDetailView(DetailView):
+
+    model = Institution
+
+
+class InstitutionCreate(CreateView):
+
+    model = Institution
+    template_name_suffix = '_create'
+    form_class = InstitutionForm
+
+
+class InstitutionUpdate(UpdateView):
+
+    model = Institution
+    template_name_suffix = '_create'
+    form_class = InstitutionForm
+
+
+class InstitutionDelete(DeleteView):
+    model = Institution
+    template_name = 'webpage/confirm_delete.html'
+    success_url = reverse_lazy('browse_institutions')

@@ -14,6 +14,16 @@ urlpatterns = [
     url(r'^archiv/edit/(?P<pk>[0-9]+)$', views.ArchivUpdate.as_view(), name='archiv_edit'),
     url(r'^archiv/delete/(?P<pk>[0-9]+)$', views.ArchivDelete.as_view(), name='archiv_delete'),
     url(r'^archiv/detail/(?P<pk>[0-9]+)$', views.ArchivDetailView.as_view(), name='archiv_detail'),
+    url(r'^institution/create/$', views.InstitutionCreate.as_view(), name='institution_create'),
+    url(
+        r'^institution/edit/(?P<pk>[0-9]+)$', views.InstitutionUpdate.as_view(),
+        name='institution_edit'),
+    url(
+        r'^institution/delete/(?P<pk>[0-9]+)$', views.InstitutionDelete.as_view(),
+        name='institution_delete'),
+    url(
+        r'^institution/detail/(?P<pk>[0-9]+)$', views.InstitutionDetailView.as_view(),
+        name='institution_detail'),
     url(
         r'^archiv-autocomplete/$', dal_views.ArchivAC.as_view(
             model=Archiv,

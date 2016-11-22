@@ -2,7 +2,7 @@
 {% block Titel %}Browse Institutions{% endblock %}
 {% block list_title %}Browse Institutions
  {% if user.is_authenticated %}
-        | <a class ="btn btn-success"  href="#">Create new Institution</a>
+        | <a class ="btn btn-success"  href="{% url 'entities:institution_create' %}">Create new Institution</a>
     {% endif %}
 {% endblock %}
 

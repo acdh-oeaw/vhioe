@@ -38,7 +38,8 @@ class ArchivTable(tables.Table):
 
 
 class InstitutionTable(tables.Table):
-    name = tables.Column(accessor="name")
+    name = tables.LinkColumn(
+        'entities:institution_detail', args=[A('pk')], verbose_name='Name')
     akronym = tables.Column(accessor="akronym")
     ort = tables.Column(accessor="ort")
     gnd_id = tables.Column(accessor="gnd_id")
