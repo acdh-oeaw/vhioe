@@ -27,6 +27,9 @@ class Archiv(EntityBaseClass):
     def __str__(self):
         return "{}".format(self.akronym)
 
+    def get_absolute_url(self):
+        return reverse('entities:archiv_detail', kwargs={'pk': self.id})
+
 
 class Institution(EntityBaseClass):
 

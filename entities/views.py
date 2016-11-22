@@ -2,8 +2,8 @@ from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from .forms import BandForm
-from .models import Band
+from .forms import BandForm, ArchivForm
+from .models import Band, Archiv
 
 
 class BandListView(generic.ListView):
@@ -34,35 +34,32 @@ class BandUpdate(UpdateView):
     form_class = BandForm
 
 
-# def band_create(request):
-#     if request.method == "POST":
-#         form = BandForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('browsing:browse_baende')
-#         else:
-#             return render(request, 'entities/band_create.html', {'form': form})
-#     else:
-#         form = BandForm()
-#         return render(request, 'entities/band_create.html', {'form': form})
-
-
-# def band_edit(request, pk):
-#     instance = get_object_or_404(Band, id=pk)
-#     if request.method == "POST":
-#         form = BandForm(request.POST, instance=instance)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('browsing:browse_baende')
-#         else:
-#             return render(
-#                 request, 'entities/band_create.html', {'form': form, 'instance': instance})
-#     else:
-#         form = BandForm(instance=instance)
-#         return render(request, 'entities/band_create.html', {'form': form, 'instance': instance})
-
-
 class BandDelete(DeleteView):
     model = Band
     template_name = 'webpage/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_baende')
+
+
+class ArchivDetailView(DetailView):
+
+    model = Archiv
+
+
+class ArchivCreate(CreateView):
+
+    model = Archiv
+    template_name_suffix = '_create'
+    form_class = ArchivForm
+
+
+class ArchivUpdate(UpdateView):
+
+    model = Archiv
+    template_name_suffix = '_create'
+    form_class = ArchivForm
+
+
+class ArchivDelete(DeleteView):
+    model = Archiv
+    template_name = 'webpage/confirm_delete.html'
+    success_url = reverse_lazy('browsing:browse_archivs')

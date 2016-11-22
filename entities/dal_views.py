@@ -5,6 +5,10 @@ class ArchivAC(autocomplete.Select2QuerySetView):
     pass
 
 
+class PlaceAC(autocomplete.Select2QuerySetView):
+    pass
+
+
 class InstitutionAC(autocomplete.Select2QuerySetView):
     pass
 

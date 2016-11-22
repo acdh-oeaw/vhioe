@@ -2,7 +2,7 @@
 {% block Titel %}Browse Archivs{% endblock %}
 {% block list_title %}Browse Archivs
  {% if user.is_authenticated %}
-        | <a class ="btn btn-success"  href="#">Create new Archiv</a>
+        | <a class ="btn btn-success"  href="{% url 'entities:archiv_create' %}">Create new Archiv</a>
     {% endif %}
 {% endblock %}
 

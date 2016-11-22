@@ -26,7 +26,8 @@ class BandTable(tables.Table):
 
 
 class ArchivTable(tables.Table):
-    name = tables.Column(accessor="name")
+    name = tables.LinkColumn(
+        'entities:archiv_detail', args=[A('pk')], verbose_name='Name')
     akronym = tables.Column(accessor="akronym")
     ort = tables.Column(accessor="ort")
     gnd_id = tables.Column(accessor="gnd_id")

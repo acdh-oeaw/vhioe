@@ -1,15 +1,19 @@
 from django.conf.urls import url
 from . import views
 from .models import Archiv, Institution, Person, Bearbeiter, Band
+from places.models import Place
 from .import dal_views
 
 
 urlpatterns = [
-    url(r'^baende/$', views.BandListView.as_view(), name='baende_list'),
     url(r'^band/create/$', views.BandCreate.as_view(), name='band_create'),
     url(r'^band/edit/(?P<pk>[0-9]+)$', views.BandUpdate.as_view(), name='band_edit'),
     url(r'^band/delete/(?P<pk>[0-9]+)$', views.BandDelete.as_view(), name='band_delete'),
     url(r'^band/detail/(?P<pk>[0-9]+)$', views.BandDetailView.as_view(), name='band_detail'),
+    url(r'^archiv/create/$', views.ArchivCreate.as_view(), name='archiv_create'),
+    url(r'^archiv/edit/(?P<pk>[0-9]+)$', views.ArchivUpdate.as_view(), name='archiv_edit'),
+    url(r'^archiv/delete/(?P<pk>[0-9]+)$', views.ArchivDelete.as_view(), name='archiv_delete'),
+    url(r'^archiv/detail/(?P<pk>[0-9]+)$', views.ArchivDetailView.as_view(), name='archiv_detail'),
     url(
         r'^archiv-autocomplete/$', dal_views.ArchivAC.as_view(
             model=Archiv,
@@ -39,5 +43,11 @@ urlpatterns = [
             model=Band,
             create_field='name',),
         name='band-autocomplete',
+    ),
+    url(
+        r'^ort-autocomplete/$', dal_views.PlaceAC.as_view(
+            model=Place,
+            create_field='name',),
+        name='ort-autocomplete',
     ),
 ]
