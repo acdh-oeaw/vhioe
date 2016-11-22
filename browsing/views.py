@@ -1,8 +1,8 @@
 from django_tables2 import SingleTableView, RequestConfig
-from .filters import EintragListFilter, BandListFilter
+from .filters import *
 from .forms import GenericFilterFormHelper
-from .tables import EintragTable, BandTable
-from entries.models import Eintrag, Band
+from .tables import *
+from entries.models import Eintrag, Band, Archiv, Institution, Person, Bearbeiter
 
 
 class GenericListView(SingleTableView):
@@ -42,4 +42,36 @@ class BrowseBand(GenericListView):
     table_class = BandTable
     template_name = 'browsing/band_list_generic.html'
     filter_class = BandListFilter
+    formhelper_class = GenericFilterFormHelper
+
+
+class BrowseArchiv(GenericListView):
+    model = Archiv
+    table_class = ArchivTable
+    template_name = 'browsing/archiv_list_generic.html'
+    filter_class = ArchivListFilter
+    formhelper_class = GenericFilterFormHelper
+
+
+class BrowseInstitution(GenericListView):
+    model = Institution
+    table_class = InstitutionTable
+    template_name = 'browsing/institution_list_generic.html'
+    filter_class = InstitutionListFilter
+    formhelper_class = GenericFilterFormHelper
+
+
+class BrowsePerson(GenericListView):
+    model = Person
+    table_class = PersonTable
+    template_name = 'browsing/person_list_generic.html'
+    filter_class = PersonListFilter
+    formhelper_class = GenericFilterFormHelper
+
+
+class BrowseBearbeiter(GenericListView):
+    model = Bearbeiter
+    table_class = BearbeiterTable
+    template_name = 'browsing/bearbeiter_list_generic.html'
+    filter_class = BearbeiterListFilter
     formhelper_class = GenericFilterFormHelper

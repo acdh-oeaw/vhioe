@@ -6,9 +6,10 @@ from .import dal_views
 
 urlpatterns = [
     url(r'^baende/$', views.BandListView.as_view(), name='baende_list'),
-    url(r'^band/create/$', views.band_create, name='band_create'),
-    url(r'^band/edit/(?P<pk>[0-9]+)$', views.band_edit, name='band_edit'),
+    url(r'^band/create/$', views.BandCreate.as_view(), name='band_create'),
+    url(r'^band/edit/(?P<pk>[0-9]+)$', views.BandUpdate.as_view(), name='band_edit'),
     url(r'^band/delete/(?P<pk>[0-9]+)$', views.BandDelete.as_view(), name='band_delete'),
+    url(r'^band/detail/(?P<pk>[0-9]+)$', views.BandDetailView.as_view(), name='band_detail'),
     url(
         r'^archiv-autocomplete/$', dal_views.ArchivAC.as_view(
             model=Archiv,

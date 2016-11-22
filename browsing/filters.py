@@ -1,5 +1,5 @@
 import django_filters
-from entries.models import Eintrag, Band
+from entries.models import Eintrag, Band, Archiv, Institution, Person, Bearbeiter
 
 
 django_filters.filters.LOOKUP_TYPES = [
@@ -30,3 +30,27 @@ class BandListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Band
+
+
+class ArchivListFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Archiv
+
+
+class InstitutionListFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Institution
+
+
+class PersonListFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Person
+
+
+class BearbeiterListFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Bearbeiter

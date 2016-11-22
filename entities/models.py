@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from vocabs.models import SkosConcept
 from places.models import Place
 
@@ -41,6 +42,7 @@ class Person(EntityBaseClass):
     GENDER_CHOICES = (
         ('männlich', 'männlich'),
         ('weiblich', 'weiblich'),
+        ('unbekannt', 'unbekannt'),
     )
     sex = models.CharField(
         blank=True, null=True, max_length=150, help_text="Sex", choices=GENDER_CHOICES)
@@ -82,3 +84,6 @@ class Band(models.Model):
 
     def __str__(self):
         return "{}, {}, {}, {}".format(self.archiv, self.bestand, self.jahr, self.signatur)
+
+    def get_absolute_url(self):
+        return reverse('entities:band_detail', kwargs={'pk': self.id})

@@ -1,6 +1,6 @@
 import django_tables2 as tables
 from django_tables2.utils import A
-from entries.models import Eintrag, Band
+from entries.models import Eintrag, Band, Archiv, Institution, Person, Bearbeiter
 
 
 class EintragTable(tables.Table):
@@ -22,4 +22,54 @@ class BandTable(tables.Table):
 
     class Meta:
         models = Band
+        attrs = {"class": "table table-hover table-striped table-condensed"}
+
+
+class ArchivTable(tables.Table):
+    name = tables.Column(accessor="name")
+    akronym = tables.Column(accessor="akronym")
+    ort = tables.Column(accessor="ort")
+    gnd_id = tables.Column(accessor="gnd_id")
+
+    class Meta:
+        models = Archiv
+        attrs = {"class": "table table-hover table-striped table-condensed"}
+
+
+class InstitutionTable(tables.Table):
+    name = tables.Column(accessor="name")
+    akronym = tables.Column(accessor="akronym")
+    ort = tables.Column(accessor="ort")
+    gnd_id = tables.Column(accessor="gnd_id")
+
+    class Meta:
+        models = Institution
+        attrs = {"class": "table table-hover table-striped table-condensed"}
+
+
+class PersonTable(tables.Table):
+    name = tables.Column(accessor="name")
+    vorname = tables.Column(accessor="vorname")
+    sex = tables.Column(accessor="sex")
+    beruf = tables.Column(accessor="beruf")
+    ort = tables.Column(accessor="ort")
+    gnd_id = tables.Column(accessor="gnd_id")
+
+    class Meta:
+        models = Person
+        attrs = {"class": "table table-hover table-striped table-condensed"}
+
+
+class BearbeiterTable(tables.Table):
+    name = tables.Column(accessor="name")
+    vorname = tables.Column(accessor="vorname")
+    bearbeiter_kuerzel = tables.Column(accessor="bearbeiter_kuerzel")
+    institution = tables.Column(accessor="institution")
+    sex = tables.Column(accessor="sex")
+    beruf = tables.Column(accessor="beruf")
+    ort = tables.Column(accessor="ort")
+    gnd_id = tables.Column(accessor="gnd_id")
+
+    class Meta:
+        models = Bearbeiter
         attrs = {"class": "table table-hover table-striped table-condensed"}
