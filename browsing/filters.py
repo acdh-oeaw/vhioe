@@ -30,27 +30,32 @@ class BandListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Band
+        fields = "__all__"
 
 
 class ArchivListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Archiv
+        fields = "__all__"
 
 
 class InstitutionListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Institution
+        fields = "__all__"
 
 
 class PersonListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Person
+        fields = "__all__"
 
 
 class BearbeiterListFilter(django_filters.FilterSet):
 
     class Meta:
         model = Bearbeiter
+        fields = "__all__"
