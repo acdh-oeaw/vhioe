@@ -12,7 +12,7 @@ class Eintrag(models.Model):
     aktenzahl = models.CharField(
         max_length=150, help_text="Kombination aus Archivkürzel_Jahr_Aktenzahl")
     faksimile = models.CharField(
-        blank=True, null=True, max_length=150,
+        blank=True, max_length=150,
         help_text="Name der Datei, auf der das Faksimile gespeichert ist.")
     eingangsdatum = models.DateField(
         blank=True, null=True,
@@ -43,7 +43,7 @@ class Eintrag(models.Model):
         SkosConcept, blank=True, null=True, help_text="Art des Eingangs",
         related_name="geschaeftsbereich_skos")
     aktenzahl_anfragende_behoerde = models.CharField(
-        blank=True, null=True, max_length=150,
+        blank=True, max_length=150,
         help_text="Aktenzahl des Eingangsstücks bei der einbringenden Behörde",
         verbose_name="Aktenzahl Einbringer")
     datum_akt_anfragende_behoerde = models.DateField(
@@ -79,7 +79,7 @@ class Eintrag(models.Model):
         blank=True, max_length=300,
         help_text="Signatur von Nachackten, die nicht von der Datenbank erfasst werden.")
     ablage = models.CharField(
-        blank=True, null=True, max_length=100,
+        blank=True, max_length=100,
         help_text="Ablageplaninformation")
 
     def __str__(self):

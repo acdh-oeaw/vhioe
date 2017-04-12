@@ -55,9 +55,9 @@ class Person(EntityBaseClass):
         ('unbekannt', 'unbekannt'),
     )
     sex = models.CharField(
-        blank=True, null=True, max_length=150, help_text="Sex", choices=GENDER_CHOICES)
+        blank=True, max_length=150, help_text="Sex", choices=GENDER_CHOICES)
     vorname = models.CharField(
-        blank=True, null=True, max_length=150, help_text="Vorname des Klienten")
+        blank=True, max_length=150, help_text="Vorname des Klienten")
     beruf = models.ForeignKey(SkosConcept, blank=True, null=True)
 
     def __str__(self):
@@ -70,7 +70,7 @@ class Bearbeiter(Person):
     """  Administrative personnel which created an entry (Eintrag) """
 
     bearbeiter_kuerzel = models.CharField(
-        blank=True, null=True, max_length=150, help_text="Kürzel des Sachbearbeiters")
+        blank=True, max_length=150, help_text="Kürzel des Sachbearbeiters")
     institution = models.ManyToManyField(
         Institution, blank=True, help_text="Institution des Bearbeiters")
 
@@ -87,10 +87,9 @@ class Band(models.Model):
     archiv = models.ForeignKey(
         Archiv, blank=True, null=True, max_length=150, help_text="Name des Archives")
     bestand = models.CharField(
-        blank=True, null=True, max_length=150, help_text="Bestandsbezeichnung")
+        blank=True, max_length=150, help_text="Bestandsbezeichnung")
     jahr = models.PositiveIntegerField(blank=True, null=True, help_text="Jahr")
-    signatur = models.CharField(
-        help_text="Archivkürzel_Bestand_Jahr(_Distinktionszeichen)", max_length=250)
+    signatur = models.CharField(verbose_name="Distinktionszeichen", max_length=250, blank=True)
 
     def __str__(self):
         return "{}, {}, {}, {}".format(self.archiv, self.bestand, self.jahr, self.signatur)
