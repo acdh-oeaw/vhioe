@@ -81,6 +81,8 @@ class Bearbeiter(Person):
         return "({}) {}".format(
             self.bearbeiter_kuerzel, "_".join([str(x) for x in self.institution.all()]))
 
+    def get_absolute_url(self):
+        return reverse('entities:bearbeiter_detail', kwargs={'pk': self.id})
 
 class Band(models.Model):
 

@@ -63,7 +63,7 @@ class PersonTable(tables.Table):
 
 
 class BearbeiterTable(tables.Table):
-    name = tables.Column(accessor="name")
+    name = tables.LinkColumn('entities:bearbeiter_detail', args=[A('pk')], verbose_name='Name ')
     vorname = tables.Column(accessor="vorname")
     bearbeiter_kuerzel = tables.Column(accessor="bearbeiter_kuerzel")
     institution = tables.Column(accessor="institution")

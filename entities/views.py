@@ -2,17 +2,45 @@ from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from .forms import BandForm, ArchivForm, InstitutionForm, PersonForm
-from .models import Band, Archiv, Institution, Person
+from .forms import BandForm, ArchivForm, InstitutionForm, PersonForm, BearbeiterForm
+from .models import Band, Archiv, Institution, Person, Bearbeiter
+
+
+class BearbeiterListView(generic.ListView):
+    model = Bearbeiter
+    template_name = 'entities/bearbeiter_list.html'
+    context_object_name = 'object_list'
+
+
+class BearbeiterDetailView(DetailView):
+
+    model = Bearbeiter
+
+
+class BearbeiterCreate(CreateView):
+
+    model = Bearbeiter
+    template_name_suffix = '_create'
+    form_class = BearbeiterForm
+
+
+class BearbeiterUpdate(UpdateView):
+
+    model = Bearbeiter
+    template_name_suffix = '_create'
+    form_class = BearbeiterForm
+
+
+class BearbeiterDelete(DeleteView):
+    model = Bearbeiter
+    template_name = 'webpage/confirm_delete.html'
+    success_url = reverse_lazy('browsing:browse_bearbeiter')
 
 
 class PersonListView(generic.ListView):
     model = Person
     template_name = 'entities/band_list.html'
     context_object_name = 'object_list'
-
-    def get_queryset(self):
-        return Person.objects.order_by('signatur')
 
 
 class PersonDetailView(DetailView):

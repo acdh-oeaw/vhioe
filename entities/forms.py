@@ -3,7 +3,33 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from .models import Band, Archiv, Institution, Person
+from .models import Band, Archiv, Institution, Person, Bearbeiter
+
+
+class BearbeiterForm(forms.ModelForm):
+    class Meta:
+        model = Bearbeiter
+        fields = [
+            'name', 'vorname', 'bearbeiter_kuerzel', 'institution',
+            'sex', 'beruf', 'ort', 'gnd_id', 'akronym'
+        ]
+        widgets = {
+            'ort': autocomplete.ModelSelect2(
+                url='entities:ort-autocomplete'),
+            'beruf': autocomplete.ModelSelect2(
+                url='vocabs-ac:skosconcept-autocomplete'),
+            'institution': autocomplete.ModelSelect2Multiple(
+                url='entities:institution-autocomplete'
+            )
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(BearbeiterForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
+        self.helper.add_input(Submit('submit', 'Speichern'))
 
 
 class PersonForm(forms.ModelForm):
