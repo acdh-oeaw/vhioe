@@ -25,7 +25,10 @@ class Archiv(EntityBaseClass):
     """Holds information about the archive"""
 
     def __str__(self):
-        return "{}".format(self.akronym)
+        if self.akronym is not "":
+            return "{}".format(self.akronym)
+        else:
+            return "{}".format(self.name)
 
     def get_absolute_url(self):
         return reverse('entities:archiv_detail', kwargs={'pk': self.id})
