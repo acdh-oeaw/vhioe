@@ -3,7 +3,27 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from .models import Band, Archiv, Institution
+from .models import Band, Archiv, Institution, Person
+
+
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = ['name', 'vorname', 'sex', 'beruf', 'ort', 'gnd_id', 'akronym']
+        widgets = {
+            'ort': autocomplete.ModelSelect2(
+                url='entities:ort-autocomplete'),
+            'beruf': autocomplete.ModelSelect2(
+                url='vocabs-ac:skosconcept-autocomplete'),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(PersonForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
+        self.helper.add_input(Submit('submit', 'Speichern'))
 
 
 class BandForm(forms.ModelForm):
@@ -18,6 +38,9 @@ class BandForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BandForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
         self.helper.add_input(Submit('submit', 'Speichern'))
 
 
@@ -33,6 +56,9 @@ class ArchivForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ArchivForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
         self.helper.add_input(Submit('submit', 'Speichern'))
 
 
@@ -48,4 +74,7 @@ class InstitutionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(InstitutionForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
         self.helper.add_input(Submit('submit', 'Speichern'))

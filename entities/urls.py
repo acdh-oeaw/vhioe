@@ -6,6 +6,10 @@ from .import dal_views
 
 
 urlpatterns = [
+    url(r'^person/create/$', views.PersonCreate.as_view(), name='person_create'),
+    url(r'^person/edit/(?P<pk>[0-9]+)$', views.PersonUpdate.as_view(), name='person_edit'),
+    url(r'^person/delete/(?P<pk>[0-9]+)$', views.PersonDelete.as_view(), name='person_delete'),
+    url(r'^person/detail/(?P<pk>[0-9]+)$', views.PersonDetailView.as_view(), name='person_detail'),
     url(r'^band/create/$', views.BandCreate.as_view(), name='band_create'),
     url(r'^band/edit/(?P<pk>[0-9]+)$', views.BandUpdate.as_view(), name='band_edit'),
     url(r'^band/delete/(?P<pk>[0-9]+)$', views.BandDelete.as_view(), name='band_delete'),

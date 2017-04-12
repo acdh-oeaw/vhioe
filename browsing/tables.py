@@ -50,7 +50,7 @@ class InstitutionTable(tables.Table):
 
 
 class PersonTable(tables.Table):
-    name = tables.Column(accessor="name")
+    name = tables.LinkColumn('entities:person_detail', args=[A('pk')], verbose_name='Name ')
     vorname = tables.Column(accessor="vorname")
     sex = tables.Column(accessor="sex")
     beruf = tables.Column(accessor="beruf")

@@ -75,10 +75,10 @@ class SkosLabel(models.Model):
 
 class SkosConcept(models.Model):
     pref_label = models.CharField(max_length=300, blank=True)
-    pref_label_lang = models.CharField(max_length=3, blank=True, default="eng")
+    pref_label_lang = models.CharField(max_length=3, blank=True, default="ger")
     scheme = models.ManyToManyField(SkosConceptScheme, blank=True)
     definition = models.TextField(blank=True)
-    definition_lang = models.CharField(max_length=3, blank=True, default="eng")
+    definition_lang = models.CharField(max_length=3, blank=True, default="ger")
     label = models.ManyToManyField(SkosLabel, blank=True)
     notation = models.CharField(max_length=300, blank=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)

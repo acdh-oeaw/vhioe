@@ -64,6 +64,9 @@ class Person(EntityBaseClass):
         return "{} | {} | {}, {} | {}".format(
             self.sex, self.ort, self.name, self.vorname, self.beruf)
 
+    def get_absolute_url(self):
+        return reverse('entities:person_detail', kwargs={'pk': self.id})
+
 
 class Bearbeiter(Person):
 
