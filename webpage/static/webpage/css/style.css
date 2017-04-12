@@ -18,7 +18,7 @@ body{
 }
 header{
     flex:0 0 auto;
-    background-color:#035151; /*#F8F8F8 #22267b*/
+    background-color:#996633; /*#F8F8F8 #22267b*/
 
     color:#ffffff;
 }
@@ -27,7 +27,7 @@ header{
 }
 footer{
     flex:0 0 auto;
-    background-color:#035151; /*#035151*/
+    background-color:#996633; /*#996633*/
     color:#ffffff;
     font-size:13px;
     padding:20px;
