@@ -12,6 +12,8 @@ class EntityBaseClass(models.Model):
     ort = models.ForeignKey(
         Place, max_length=200, blank=True, null=True, help_text="Place entity is related to.")
     gnd_id = models.CharField(max_length=50, blank=True, help_text="gnd-identifier")
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -37,6 +39,10 @@ class Archiv(EntityBaseClass):
 class Institution(EntityBaseClass):
 
     """Holds information about an institution which has to deal with an entry."""
+
+    part_of = models.ForeignKey(
+        'Institution', null=True, blank=True, verbose_name="Vorgesetzte Institution"
+    )
 
     def __str__(self):
         return "{}".format(self.name)
