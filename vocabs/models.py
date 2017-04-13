@@ -61,7 +61,9 @@ class SkosLabel(models.Model):
     label_type = models.CharField(
         max_length=30, blank=True, choices=LABEL_TYPES, help_text="The type of the label.")
     isoCode = models.CharField(
-        max_length=3, blank=True, help_text="The ISO 639-3 code for the label's language.")
+        max_length=3, blank=True,
+        help_text="The ISO 639-3 code for the label's language.", default="ger"
+    )
 
     def __str__(self):
         if self.label_type != "":
