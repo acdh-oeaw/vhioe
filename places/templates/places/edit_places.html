@@ -1,13 +1,11 @@
 {% extends "webpage/base.html" %}
+{% load staticfiles %}
 {% block Titel %}Edit Places{% endblock %}
 
 {% block scriptHeader %}
-<!-- In case you are using any autocomplete-functions, don´t forget to 
-    include 'autocomplete_light/static.html
--->
 <!--leafletjs -->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+    <link rel="stylesheet" href="{% static 'places/leaflet/leaflet.css' %}" />
+    <script type="text/javascript" src="{% static 'places/leaflet/leaflet.js' %}"></script>
         <style>
             #map { height: 500px; }
         </style>
@@ -38,7 +36,7 @@
                 </form>
            </div>
        </div>
-{% if object %}       
+{% if object %}
    </div>
     <div class ="col-md-8">
         <div class="panel panel-default">

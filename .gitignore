@@ -4,6 +4,7 @@ __pycache__/
 
 #Ipython Notebook
 .ipynb_checkpoints
+/staticfiles/*
 
 /db.sqlite3
 /vhioe/settings/mysql.py
