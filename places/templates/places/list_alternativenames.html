@@ -1,4 +1,5 @@
 {% extends "webpage/base.html" %}
+{% load staticfiles %}
 {% block Titel %}Edit Places{% endblock %}
 
 {% block content %}
@@ -22,8 +23,8 @@
 							<td><a href="{% url 'places:alternativenames_edit' pk=object.id %}">{{ object }}</a></td>
 						</tr>
 						{% endfor %}
-					</tbody>	
-				</table>					
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

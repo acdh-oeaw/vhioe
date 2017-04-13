@@ -1,9 +1,11 @@
 {% extends "webpage/base.html" %}
+{% load staticfiles %}
 {% block Titel %}Edit Places{% endblock %}
 
-{% block scriptHeader %}<!--leafletjs -->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+{% block scriptHeader %}
+<!--leafletjs -->
+    <link rel="stylesheet" href="{% static 'places/leaflet/leaflet.css' %}" />
+    <script type="text/javascript" src="{% static 'places/leaflet/leaflet.js' %}"></script>
         <style>
             #map { height: 500px; }
         </style>
@@ -31,8 +33,8 @@
 							<td>{{ object.geonames_id }}</td>
 						</tr>
 						{% endfor %}
-					</tbody>	
-				</table>					
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

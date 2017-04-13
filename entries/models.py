@@ -2,6 +2,7 @@ from django.db import models
 from vocabs.models import SkosConcept
 from django.core.urlresolvers import reverse
 from entities.models import *
+from places.models import Place
 
 
 class Eintrag(models.Model):
@@ -25,6 +26,7 @@ class Eintrag(models.Model):
     einbringer = models.NullBooleanField(
         null=True, default=False,
         help_text="Handelt es sich beim 'Einbringer' um eine Person (Ja/Nein).")
+    einbringer_ort = models.ForeignKey(Place, blank=True, null=True)
     einbringer_berufsgruppe = models.ForeignKey(
         SkosConcept, blank=True, null=True, related_name="einbringer_beruf_skos",
         help_text="Berufsgruppe, welcher die einbringede Person zugeordnet werde kann")
