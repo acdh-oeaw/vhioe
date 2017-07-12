@@ -22,28 +22,33 @@ class Eintrag(models.Model):
     klient_institution = models.ManyToManyField(
         Institution, blank=True, help_text="Institution, von der Eingangsstück ausgeht",
         related_name="institution_klient",
-        verbose_name="Einbringer (Institution)")
+        verbose_name=" Einbringende Institution")
     einbringer = models.NullBooleanField(
-        null=True, default=False,
-        help_text="Handelt es sich beim 'Einbringer' um eine Person (Ja/Nein).")
-    einbringer_ort = models.ForeignKey(Place, blank=True, null=True)
+        null=True, default=False, verbose_name="Einbringer*in",
+        help_text="Geht das Eingangsstück von einer Person aus (Ja/Nein)")
+    einbringer_ort = models.ForeignKey(
+        Place, blank=True, null=True, verbose_name="Einbringer*in Ort",
+        help_text="Wohn- oder Aufenthaltsort der einbringenden Person"
+    )
     einbringer_berufsgruppe = models.ForeignKey(
         SkosConcept, blank=True, null=True, related_name="einbringer_beruf_skos",
-        help_text="Berufsgruppe, welcher die einbringede Person zugeordnet werde kann")
+        help_text="Berufsgruppe, der die einbringende Person zugeordnet werden kann",
+        verbose_name="Einbringer*in Berufsgruppe")
     einbringer_geschlecht = models.ForeignKey(
         SkosConcept, blank=True, null=True, related_name="einbringer_geschlecht_skos",
-        help_text="PLEASEPROVIDESOMEHELPTEXT")
+        verbose_name="Einbringer*in Geschlecht",
+        help_text="Angegebenes Geschlecht der einbringenden Person")
     klient_person = models.ManyToManyField(
         Person, blank=True,
         help_text="Person, von der Eingangsstück ausgeht",
         related_name="person_klient",
-        verbose_name="Einbringer (Person)")
+        verbose_name="Einbringer*in Person")
     eingangsart = models.ForeignKey(
         SkosConcept, blank=True, null=True, help_text="Art des Eingangs",
         related_name="eingangsart_skos")
     geschaeftsbereich = models.ForeignKey(
-        SkosConcept, blank=True, null=True, help_text="Art des Eingangs",
-        related_name="geschaeftsbereich_skos")
+        SkosConcept, blank=True, null=True, help_text="Sachbereich des Betreffs",
+        related_name="geschaeftsbereich_skos", verbose_name="Geschäftsbereich")
     aktenzahl_anfragende_behoerde = models.CharField(
         blank=True, max_length=150,
         help_text="Aktenzahl des Eingangsstücks bei der einbringenden Behörde",
@@ -52,34 +57,35 @@ class Eintrag(models.Model):
         blank=True, null=True, verbose_name="Datum Einbringer",
         help_text="Ausstellungsdatum des Eingangsstücks. Bitte im Format YYYY-MM-DD angeben")
     vorakten_erfasst = models.ManyToManyField(
-        "Eintrag", blank=True, help_text="Aktenzahlen von Vorakten", related_name='eintrag_vorakt')
+        "Eintrag", blank=True, help_text="Aktenzahlen von Vorakten", related_name='eintrag_vorakt',
+        verbose_name="Vorakten erfasst")
     vorakten_nichterfast = models.CharField(
-        blank=True, max_length=300,
+        blank=True, max_length=300, verbose_name="Vorakten nicht erfasst",
         help_text="Signatur von Vorakten, die nicht von der Datenbank erfasst werden.")
     frist = models.DateField(
         blank=True, null=True,
         help_text="Zur Beantwortung vorgegebene Frist. Bitte im Format YYYY-MM-DD angeben")
     erledigungs_art = models.ForeignKey(
         SkosConcept, blank=True, null=True, related_name="erledigungs_art_skos",
-        help_text="Art der Erledigung durch Bezirksbehörde.")
+        help_text="Art der Erledigung durch Bezirksbehörde.", verbose_name="Erledigungsart")
     erledigende_institution = models.ManyToManyField(
         Institution, blank=True, help_text="Institution, an die sich Erledigung richtet",
         related_name="institution_erledigt",
-        verbose_name="„Empfänger (Institution)")
+        verbose_name="Empfangende Institution")
     erledigende_person = models.ManyToManyField(
         Person, blank=True,
         help_text="Person, an die sich Erledigung richtet.",
         related_name="person_erledigt",
-        verbose_name="Empfänger (Person)")
+        verbose_name="Empfänger*in Person")
     erledigungsdatum = models.DateField(
         blank=True, null=True,
         help_text="Datum der Erledigung: Datumsangaben bitte im Format YYYY-MM-DD angeben")
     nachakten_erfasst = models.ManyToManyField(
         "Eintrag", blank=True, help_text="Aktenzahlen von Nachakten.",
-        related_name='eintrag_nachakt')
+        related_name='eintrag_nachakt', verbose_name="Nachakten erfasst")
     nachackten_nichterfast = models.CharField(
-        blank=True, max_length=300,
-        help_text="Signatur von Nachackten, die nicht von der Datenbank erfasst werden.")
+        blank=True, max_length=300, verbose_name="Nachakten nicht erfasst",
+        help_text="Signatur von Nachakten, die nicht von der Datenbank erfasst werden.")
     ablage = models.CharField(
         blank=True, max_length=100,
         help_text="Ablageplaninformation")

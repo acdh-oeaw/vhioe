@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
@@ -20,6 +21,7 @@ class EintragCreate(CreateView):
     model = Eintrag
     template_name_suffix = '_create'
     form_class = EintragForm
+    success_url = '.'
 
 
 class EintragUpdate(UpdateView):
