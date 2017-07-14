@@ -41,6 +41,7 @@ class EintragUpdate(UpdateView):
     def dispatch(self, *args, **kwargs):
         return super(EintragUpdate, self).dispatch(*args, **kwargs)
 
+
 class EintragDelete(DeleteView):
     model = Eintrag
     template_name = 'vocabs/confirm_delete.html'
