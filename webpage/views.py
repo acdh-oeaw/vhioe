@@ -1,26 +1,22 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template import RequestContext, loader
 from django.contrib.auth import authenticate, login, logout
 from .forms import form_user_login
-from .metadata import PROJECT_METADATA as PM
+from django.views.generic import TemplateView
 
 
-def start_view(request):
-    if PM is not None:
-        context = {"metadata": PM}
-    else:
-        context = {}
+class GenericWebpageView(TemplateView):
+    template_name = 'webpage/index.html'
 
-    return render(request, 'webpage/index.html', context)
-
-
-def imprint_view(request):
-    if PM is not None:
-        context = {"metadata": PM}
-    else:
-        context = {}
-
-    return render(request, 'webpage/imprint.html', context)
+    def get_template_names(self):
+        template_name = "webpage/{}.html".format(self.kwargs.get("template", 'index'))
+        try:
+            loader.select_template([template_name])
+            template_name = "webpage/{}.html".format(self.kwargs.get("template", 'index'))
+        except:
+            template_name = "webpage/index.html"
+        return [template_name]
 
 
 #################################################################

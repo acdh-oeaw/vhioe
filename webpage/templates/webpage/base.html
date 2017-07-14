@@ -39,7 +39,7 @@
             "message":"This website uses cookies to ensure you get the best experience on our website",
             "dismiss":"Got it!",
             "learnMore":"More info",
-            "link":"{% url 'webpage:imprint' %}",
+            "link":"{% url 'webpage:staticpage' template='imprint' %}",
             "theme":"dark-bottom"};
     </script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
@@ -100,10 +100,13 @@
                                     <a href="{% url 'webpage:start' %}">{% projects_metadata 'title' %}</a>
                                 </li>
                                 <li>
+                                    <a href="{% url 'webpage:staticpage' template='about' %}">About</a>
+                                </li>
+                                <li>
                                     <a href="{% url 'datamodel:plate' %}">Application's data model</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'webpage:imprint' %}">Impressum / Imprint</a>
+                                    <a href="{% url 'webpage:staticpage' template='imprint' %}">Imprint</a>
                                 </li>
                               </ul>
                           </li>
@@ -210,8 +213,8 @@
         <footer>
             <div class="row text-center">
                 <div class="col-sm-3">
-                    <a href="https://acdh.oeaw.ac.at/acdh/" class="navlink" target="_blank">
-                        <img src="{% static 'webpage/img/ACDH_kurz_Weiss.png' %}" alt="ACDH" width="25%"/>
+                    <a href="https://www.oeaw.ac.at/acdh/" class="navlink" target="_blank">
+                        <img src="{% static 'webpage/img/acdh_logo_02.png' %}" alt="ACDH" width="25%"/>
                     </a>
                 </div>
                 <div class="col-sm-3">
