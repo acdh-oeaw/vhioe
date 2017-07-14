@@ -33,5 +33,5 @@ urlpatterns = [
         name='skoslabel_create'),
     url(
         r'^label/update/(?P<pk>[0-9]+)$', views.SkosLabelUpdate.as_view(),
-        name='skoslabel_update')
+        name='skoslabel_update'),
 ]

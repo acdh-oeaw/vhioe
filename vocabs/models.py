@@ -61,9 +61,7 @@ class SkosLabel(models.Model):
     label_type = models.CharField(
         max_length=30, blank=True, choices=LABEL_TYPES, help_text="The type of the label.")
     isoCode = models.CharField(
-        max_length=3, blank=True,
-        help_text="The ISO 639-3 code for the label's language.", default="ger"
-    )
+        max_length=3, blank=True, help_text="The ISO 639-3 code for the label's language.")
 
     def __str__(self):
         if self.label_type != "":
@@ -77,10 +75,10 @@ class SkosLabel(models.Model):
 
 class SkosConcept(models.Model):
     pref_label = models.CharField(max_length=300, blank=True)
-    pref_label_lang = models.CharField(max_length=3, blank=True, default="ger")
+    pref_label_lang = models.CharField(max_length=3, blank=True, default="eng")
     scheme = models.ManyToManyField(SkosConceptScheme, blank=True)
     definition = models.TextField(blank=True)
-    definition_lang = models.CharField(max_length=3, blank=True, default="ger")
+    definition_lang = models.CharField(max_length=3, blank=True, default="eng")
     label = models.ManyToManyField(SkosLabel, blank=True)
     notation = models.CharField(max_length=300, blank=True)
     namespace = models.ForeignKey(SkosNamespace, blank=True, null=True)
