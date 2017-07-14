@@ -21,7 +21,7 @@ class EintragForm(forms.ModelForm):
             'einbringer_berufsgruppe': autocomplete.ModelSelect2(
                 url='vocabs-ac:skosconcept-autocomplete'),
             'einbringer_geschlecht': autocomplete.ModelSelect2(
-                url='vocabs-ac:skosconcept-autocomplete'),
+                url='../../../vocabs-ac/skos-constraint-ac/?scheme=einbringer_geschlecht'),
             'klient_person': autocomplete.ModelSelect2Multiple(
                 url='entities:person-autocomplete'),
             'eingangsart': autocomplete.ModelSelect2(
