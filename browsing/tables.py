@@ -7,7 +7,10 @@ class EintragTable(tables.Table):
     aktenzahl = tables.LinkColumn(
         'entries:eintrag_detail', args=[A('pk')], verbose_name='Akteneintrag')
     band_archiv = tables.Column(accessor='band.archiv', verbose_name="Archiv")
-    band = tables.LinkColumn('entities:band_edit', args=[A('pk')], verbose_name='Band')
+    band = tables.LinkColumn(
+        'entities:band_detail', accessor='band', args=[A('band.id')],
+        verbose_name='Band'
+    )
 
     class Meta:
         models = Eintrag
