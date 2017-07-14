@@ -2,8 +2,91 @@
 
 {% block content %}
 
-<h1>{{ object }}</h1>
+<div class="panel panel-default">
+    <div class="panel-heading" style="text-align: center;">
+        <h3>Detail view of</h3>
+        <h1>{{ object }}</h1>
+         {% if user.is_authenticated %}
+            <a href="{% url 'entries:eintrag_update' pk=object.id %}">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="edit">
+            </a>
+            <a href="{% url 'entries:eintrag_delete' pk=object.id %}">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" title="delete">
+            </a>
+        {% endif %}
+    </div>
+    <div class="panel-body">
+        <legend>Eintrag</legend>
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-sm-3">Band</td>
+                <td>{{ object.band }}</td>
+            </tr>
+            <tr>
+                <th>Eingangsdatum</td>
+                <td>{{ object.eingangsdatum }}</td>
+            </tr>
+            <tr>
+                <th>Sachbearbeiter</th>
+                <td>{% for x in object.bearbeiter.all %}
+                        {{ x }}
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+        <legend>Einbringer</legend>
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-sm-3">Einbringende Institution</th>
+                <td>{% for x in object.klient_institution.all %}
+                        {{ x }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Wohn- oder Aufenthaltsort der einbringenden Person</th>
+                <td>{{ object.einbringer_ort }}</td>
+            </tr>
+            <tr>
+                <th>Einbringer*in Berufsgruppe</th>
+                <td>{{ object.einbringer_berufsgruppe }}</td>
+            </tr>
+            <tr>
+                <th>Einbringer*in Person</th>
+                <td>{% for x in object.klient_person.all %}
+                        {{ x }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Art des Eingangs</th>
+                <td>{{ object.eingangsart }}</td>
+            </tr>
+        </table>
+        <legend>Geschäftsgang</legend>
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-sm-3">Art des Eingangs</th>
+                <td>{{ object.eingangsart }}</td>
+            </tr>
+            <tr>
+                <th>Sachbereich des Betreffs</th>
+                <td>{{ object.geschaeftsbereich }}</td>
+            </tr>
+            <tr>
+                <th>Aktenzahl Einbringer</th>
+                <td>{{ object.aktenzahl_anfragende_behoerde }}</td>
+            </tr>
+            <tr>
+                <th>Datum Einbringer</th>
+                <td>{{ object.datum_akt_anfragende_behoerde }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-footer">
 
+    </div>
+</div>
 
 {% if user.is_authenticated %}
 <a class="btn btn-primary" href="{% url 'entries:eintrag_update' pk=object.id %}" role="button">edit Eintrag</a>

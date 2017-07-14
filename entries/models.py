@@ -22,7 +22,7 @@ class Eintrag(models.Model):
     klient_institution = models.ManyToManyField(
         Institution, blank=True, help_text="Institution, von der Eingangsstück ausgeht",
         related_name="institution_klient",
-        verbose_name=" Einbringende Institution")
+        verbose_name="Einbringende Institution")
     einbringer = models.NullBooleanField(
         null=True, default=False, verbose_name="Einbringer*in",
         help_text="Geht das Eingangsstück von einer Person aus (Ja/Nein)")
