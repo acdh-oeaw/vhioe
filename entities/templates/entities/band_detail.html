@@ -10,6 +10,9 @@
                 <a href="{% url 'entities:band_edit' pk=object.id %}">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="edit">
                 </a>
+                <a href="{% url 'entities:band_delete' pk=object.id %}">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" title="delete">
+                </a>
             {% endif %}
         </div>
         <div class="panel-body">
@@ -33,11 +36,11 @@
                         {{ object.signatur }}
                     </td>
                 </tr>
-                
+
             </table>
         </div>
         <div class="panel-footer">
-            
+
         </div>
     </div>
 {% endblock %}

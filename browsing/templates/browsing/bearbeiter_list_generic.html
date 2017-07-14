@@ -1,11 +1,14 @@
 {% extends "browsing/generic_list.html" %}
 {% block Titel %}Browse Bearbeiter{% endblock %}
 {% block list_title %}Browse Bearbeiter
-{% if user.is_authenticated %}
-    <a href="{% url 'entities:bearbeiter_create' %}">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true" title="neues Object anlegen">
-    </a>
-{% endif %}
+    {% if user.is_authenticated %}
+    |
+    <small>
+        <a href="{% url 'entities:bearbeiter_create' %}">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" title="neues Object anlegen">
+        </a>
+    </small>
+    {% endif %}
 {% endblock %}
 
 {% block reset_button %}

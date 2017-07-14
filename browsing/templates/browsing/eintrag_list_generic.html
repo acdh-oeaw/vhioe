@@ -1,15 +1,20 @@
 {% extends "browsing/generic_list.html" %}
 {% block Titel %}Browse Entries{% endblock %}
 {% block list_title %}Browse Entries
- {% if user.is_authenticated %}
-        | <a class ="btn btn-success"  href="{% url 'entries:eintrag_create' %}">Create new Eintrag</a>
+    {% if user.is_authenticated %}
+        |
+        <small>
+            <a href="{% url 'entries:eintrag_create' %}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true" title="neues Object anlegen">
+            </a>
+        </small>
     {% endif %}
 {% endblock %}
 
 {% block reset_button %}
 <!-- <a class ="btn btn-default"  id="01">Show/Hide Advanced search options</a></br>
  <p></p> -->
- <a class ="btn btn-default"  href="{% url 'browsing:browse_entries' %}">Reset search</a>     
+ <a class ="btn btn-default"  href="{% url 'browsing:browse_entries' %}">Reset search</a>
 {% endblock %}
 
 {% block customScripts %}

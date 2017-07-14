@@ -1,5 +1,7 @@
 from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from .forms import BandForm, ArchivForm, InstitutionForm, PersonForm, BearbeiterForm
@@ -33,7 +35,7 @@ class BearbeiterUpdate(UpdateView):
 
 class BearbeiterDelete(DeleteView):
     model = Bearbeiter
-    template_name = 'webpage/confirm_delete.html'
+    template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_bearbeiter')
 
 
@@ -64,7 +66,7 @@ class PersonUpdate(UpdateView):
 
 class PersonDelete(DeleteView):
     model = Person
-    template_name = 'webpage/confirm_delete.html'
+    template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_persons')
 
 
@@ -98,8 +100,12 @@ class BandUpdate(UpdateView):
 
 class BandDelete(DeleteView):
     model = Band
-    template_name = 'webpage/confirm_delete.html'
+    template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_baende')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BandDelete, self).dispatch(*args, **kwargs)
 
 
 # Archiv
@@ -126,7 +132,7 @@ class ArchivUpdate(UpdateView):
 
 class ArchivDelete(DeleteView):
     model = Archiv
-    template_name = 'webpage/confirm_delete.html'
+    template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_archivs')
 
 
@@ -154,5 +160,5 @@ class InstitutionUpdate(UpdateView):
 
 class InstitutionDelete(DeleteView):
     model = Institution
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('browse_institutions')
+    template_name = 'vocabs/confirm_delete.html'
+    success_url = reverse_lazy('browsing:browse_institutions')

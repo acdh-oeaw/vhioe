@@ -7,5 +7,6 @@
 
 {% if user.is_authenticated %}
 <a class="btn btn-primary" href="{% url 'entries:eintrag_update' pk=object.id %}" role="button">edit Eintrag</a>
+<a class="btn btn-danger" href="{% url 'entries:eintrag_delete' pk=object.id %}" role="button">delete Eintrag</a>
 {% endif %}
 {% endblock %}
