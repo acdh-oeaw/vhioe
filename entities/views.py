@@ -25,6 +25,10 @@ class BearbeiterCreate(CreateView):
     template_name_suffix = '_create'
     form_class = BearbeiterForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BearbeiterCreate, self).dispatch(*args, **kwargs)
+
 
 class BearbeiterUpdate(UpdateView):
 
@@ -32,11 +36,19 @@ class BearbeiterUpdate(UpdateView):
     template_name_suffix = '_create'
     form_class = BearbeiterForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BearbeiterUpdate, self).dispatch(*args, **kwargs)
+
 
 class BearbeiterDelete(DeleteView):
     model = Bearbeiter
     template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_bearbeiter')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BearbeiterDelete, self).dispatch(*args, **kwargs)
 
 
 class PersonListView(generic.ListView):
@@ -56,6 +68,10 @@ class PersonCreate(CreateView):
     template_name_suffix = '_create'
     form_class = PersonForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PersonCreate, self).dispatch(*args, **kwargs)
+
 
 class PersonUpdate(UpdateView):
 
@@ -63,11 +79,19 @@ class PersonUpdate(UpdateView):
     template_name_suffix = '_create'
     form_class = PersonForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PersonUpdate, self).dispatch(*args, **kwargs)
+
 
 class PersonDelete(DeleteView):
     model = Person
     template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_persons')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PersonDelete, self).dispatch(*args, **kwargs)
 
 
 class BandListView(generic.ListView):
@@ -90,12 +114,20 @@ class BandCreate(CreateView):
     template_name_suffix = '_create'
     form_class = BandForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BandCreate, self).dispatch(*args, **kwargs)
+
 
 class BandUpdate(UpdateView):
 
     model = Band
     template_name_suffix = '_create'
     form_class = BandForm
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BandUpdate, self).dispatch(*args, **kwargs)
 
 
 class BandDelete(DeleteView):
@@ -122,6 +154,10 @@ class ArchivCreate(CreateView):
     template_name_suffix = '_create'
     form_class = ArchivForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ArchivCreate, self).dispatch(*args, **kwargs)
+
 
 class ArchivUpdate(UpdateView):
 
@@ -129,11 +165,19 @@ class ArchivUpdate(UpdateView):
     template_name_suffix = '_create'
     form_class = ArchivForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ArchivUpdate, self).dispatch(*args, **kwargs)
+
 
 class ArchivDelete(DeleteView):
     model = Archiv
     template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_archivs')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ArchivDelete, self).dispatch(*args, **kwargs)
 
 
 # Institution
@@ -150,6 +194,10 @@ class InstitutionCreate(CreateView):
     template_name_suffix = '_create'
     form_class = InstitutionForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(InstitutionDelete, self).dispatch(*args, **kwargs)
+
 
 class InstitutionUpdate(UpdateView):
 
@@ -157,8 +205,16 @@ class InstitutionUpdate(UpdateView):
     template_name_suffix = '_create'
     form_class = InstitutionForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(InstitutionUpdate, self).dispatch(*args, **kwargs)
+
 
 class InstitutionDelete(DeleteView):
     model = Institution
     template_name = 'vocabs/confirm_delete.html'
     success_url = reverse_lazy('browsing:browse_institutions')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(InstitutionDelete, self).dispatch(*args, **kwargs)
