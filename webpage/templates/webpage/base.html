@@ -71,7 +71,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" id="top-procustom-navbar">
       <div class="container">
 
         <div class="navbar-header">
@@ -209,12 +209,11 @@
 
 
   <section class="main-content">
-      {% block procustom-index %}
-      {% endblock %}
-      <div id="content" class="container">
+
+
           {% block content %}
           {% endblock %}
-      </div>
+
   </section>
 
 
@@ -242,6 +241,7 @@
             }
         });
     </script>
+
 
     <!-- cool share -->
       <script type="text/javascript">
