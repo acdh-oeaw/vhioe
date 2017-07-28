@@ -9,6 +9,7 @@ __pycache__/
 /db.sqlite3
 /vhioe/settings/mysql.py
 /vhioe/settings/server.py
+/vhioe/settings/dev_local.py
 /playAndTry.ipynb
 /vhioe/db.sqlite3
 

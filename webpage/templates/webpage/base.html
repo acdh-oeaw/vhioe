@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{% static 'webpage/libraries/bootstrap337/css/bootstrap.min.css' %}" />
     <!-- custom css -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Istok+Web" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{% static 'webpage/css/style.css' %}" /> -->
     <link rel="stylesheet" href="{% static 'webpage/css/style.css' %}" />
     <!-- custom less -->
     <link rel="stylesheet/less" type="text/css" href="{% static 'webpage/css/style.less' %}" />
@@ -67,225 +69,207 @@
     {% block scriptHeader %}
     {% endblock %}
 </head>
-    <body role="document">
-        <header class="page-header procustom-header">
-            <div class="container" id="procustom-affix">
-                <div class="logo-container">
-                    <h4>place for some logo<h4>
-                    <a href="{% url 'webpage:start' %}" class="navlink">
-                        <h4>place for some logo<h4>
-                        <!-- <img src="{% static '' %}"  id="pro-logo" title="project-specific-logo"/> -->
-                    </a>
-                </div>
-            </div>
+<body>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
 
-            <nav class="navbar navbar-default navbar-static-top procustom-navbar" id="top-procustom-navbar" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation!</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                          <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% projects_metadata 'title' %}
-                              <span class="caret"/>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{% url 'webpage:start' %}">{% projects_metadata 'title' %}</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'webpage:staticpage' template='about' %}">About</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'datamodel:plate' %}">Application's data model</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'webpage:staticpage' template='imprint' %}">Imprint</a>
-                                </li>
-                              </ul>
-                          </li>
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Curation
-                              <span class="caret"/>
-                              </a>
-                              <ul class="dropdown-menu">
+        <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-                                <li>
-                                    <a href="{% url 'browsing:browse_entries' %}">Einträge</a>
-                                </li>
-                                <li class="dropdown-header">Entities</li>
-                                <li>
-                                    <a href="{% url 'browsing:browse_baende' %}">Bände</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'browsing:browse_archivs' %}">Archive</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'browsing:browse_institutions' %}">Institutionen</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'browsing:browse_persons' %}">Personen</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'browsing:browse_bearbeiter' %}">Bearbeiter</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'places:place_list' %}">Places</a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vocabs Curation
-                              <span class="caret"/>
-                              </a>
-                                <ul class="dropdown-menu procustom-dropdown-menu">
-                                    <li>
-                                        <a href="{% url 'vocabs:skosconceptscheme_list' %}">Concept Schemes</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'vocabs:browse_vocabs' %}">Concepts</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'vocabs:skoslabel_list' %}">Labels</a>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li>
-                                        <a href="{% url 'vocabs:skos_import' %}">Import SKOS (RDF/XML)</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'vocabs:skos_csv_import' %}">Import Vocabs from CSV</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'api-root' %}">Export SKOS (API)</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Retrieval
-                              <span class="caret"/>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{% url 'api-root' %}">API (JSON)</a>
-                                </li>
-                              </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                {% if user.is_authenticated %}
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                        {{ user.get_username }}
-                                    </a>
-                                    <ul class="dropdown-menu procustom-dropdown-menu">
-                                        <li><a href="{% url 'webpage:user_logout' %}">Log-Out</a></li>
-                                    </ul>
-                                {% else %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-                                    </a>
-                                    <ul class="dropdown-menu procustom-dropdown-menu">
-                                        <li><a href="{% url 'webpage:user_login' %}">Log-In</a></li>
-                                    </ul>
-                                {% endif %}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <section class="main-content">
-            {% block procustom-index %}
-            {% endblock %}
-            <div id="content" class="container">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </section>
-
-
-        <div align="text-center">
-            <span class="socialShare"> <!-- The share buttons will be inserted here --> </span>
+              <a class="navbar-brand" href="/">
+                <img id="vhioe-brand-logo"
+                    src="{% static 'webpage/img/logo5oxblood_transparent.png' %}" alt="VHIOE">
+              </a>
         </div>
 
-        <footer>
-            <div class="row text-center">
-                <div class="col-sm-3">
-                    <a href="https://www.oeaw.ac.at/acdh/" class="navlink" target="_blank">
-                        <img src="{% static 'webpage/img/acdh_logo_02.png' %}" alt="ACDH" width="25%"/>
-                    </a>
-                </div>
-                <div class="col-sm-3">
-                    <a href="{% projects_metadata 'github' %}" class="navlink" target="_blank">
-                        <img src="{% static 'webpage/img/GitHub-Mark-Light-64px.png' %}" alt="{{ metadata.github }}" width="10%"/>
-                    </a>
-                </div>
-                <div class="col-sm-3">
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="navlink" target="_blank">
-                        <img src="{% static 'webpage/img/by-sa.png' %}" alt="CC-BY-SA-4.0" width="25%"/>
-                    </a>
-                </div>
-                <div class="col-sm-3">
-                    <a href="http://www.univie.ac.at/Geschichte" class="navlink" target="_blank">
-                        <img src="{% static 'webpage/img/ifg_logo_1.gif' %}" alt="Institut für Geschichte - Uni Wien<" width="25%"/>
-                    </a>
-                </div>
-            </div>
-    </footer>
-    {% block scripts %}
-        <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap.min.js' %}"></script>
-        <!-- <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap-tab.js' %}"></script> -->
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  About
+                  <span class="caret"/>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'webpage:start' %}">{% projects_metadata 'title' %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'webpage:staticpage' template='about' %}">About</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'datamodel:plate' %}">Application's data model</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'webpage:staticpage' template='imprint' %}">Imprint</a>
+                    </li>
+                  </ul>
+              </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Curation
+                  <span class="caret"/>
+                  </a>
+                  <ul class="dropdown-menu">
 
-        <script type="text/javascript">
-            var nav = $('#top-procustom-navbar'); // Change to nav div
-            var nav_class = 'mini-nav'; // Change to class name
-            var threshold = 100; // Change to pixels scrolled
+                    <li>
+                        <a href="{% url 'browsing:browse_entries' %}">Einträge</a>
+                    </li>
+                    <li class="dropdown-header">Entities</li>
+                    <li>
+                        <a href="{% url 'browsing:browse_baende' %}">Bände</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'browsing:browse_archivs' %}">Archive</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'browsing:browse_institutions' %}">Institutionen</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'browsing:browse_persons' %}">Personen</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'browsing:browse_bearbeiter' %}">Bearbeiter</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'places:place_list' %}">Places</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vocabs Curation
+                  <span class="caret"/>
+                  </a>
+                    <ul class="dropdown-menu procustom-dropdown-menu">
+                        <li>
+                            <a href="{% url 'vocabs:skosconceptscheme_list' %}">Concept Schemes</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'vocabs:browse_vocabs' %}">Concepts</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'vocabs:skoslabel_list' %}">Labels</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="{% url 'vocabs:skos_import' %}">Import SKOS (RDF/XML)</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'vocabs:skos_csv_import' %}">Import Vocabs from CSV</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'api-root' %}">Export SKOS (API)</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Retrieval
+                  <span class="caret"/>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'api-root' %}">API (JSON)</a>
+                    </li>
+                  </ul>
+                </li>
+            </ul>
 
-            $(window).scroll(function () {
-            var distance = $(this).scrollTop();
-                if (distance > threshold) { // If scrolled past threshold
-                    nav.addClass(nav_class); // Add class to nav
-                } else { // If user scrolls back to top
-                    if (nav.hasClass(nav_class)) { // And if class has been added
-                        nav.removeClass(nav_class); // Remove it
-                    }
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    {% if user.is_authenticated %}
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            {{ user.get_username }}
+                        </a>
+                        <ul class="dropdown-menu procustom-dropdown-menu">
+                            <li><a href="{% url 'webpage:user_logout' %}">Log-Out</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu procustom-dropdown-menu">
+                            <li><a href="{% url 'webpage:user_login' %}">Log-In</a></li>
+                        </ul>
+                    {% endif %}
+                </li>
+            </ul>
+
+
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+
+  <section class="main-content">
+      {% block procustom-index %}
+      {% endblock %}
+      <div id="content" class="container">
+          {% block content %}
+          {% endblock %}
+      </div>
+  </section>
+
+
+<footer>
+<p> copyright oeaw </p>
+</footer>
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap.min.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap-tab.js' %}"></script> -->
+
+    <script type="text/javascript">
+        var nav = $('#top-procustom-navbar'); // Change to nav div
+        var nav_class = 'mini-nav'; // Change to class name
+        var threshold = 100; // Change to pixels scrolled
+
+        $(window).scroll(function () {
+        var distance = $(this).scrollTop();
+            if (distance > threshold) { // If scrolled past threshold
+                nav.addClass(nav_class); // Add class to nav
+            } else { // If user scrolls back to top
+                if (nav.hasClass(nav_class)) { // And if class has been added
+                    nav.removeClass(nav_class); // Remove it
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 
-        <!-- cool share -->
-          <script type="text/javascript">
-            $(function (){
-              var options = {
-                twitter: {
-                  text: '19th century Austrian Administration, Huiiiiiii',
-                  via: ''
-                },
-                facebook : true,
-                googlePlus : true
-              };
-              $('.socialShare').shareButtons(options);
-            });
-          </script>
-        <!-- scroll-up-bottom -->
-        <script type="text/javascript">
-                // Setup plugin with default settings
-                $(document).ready(function() {
-                    $.apScrollTop({
-                        'onInit': function(evt) {
-                            console.log('apScrollTop: init');
-                        }
-                    });
+    <!-- cool share -->
+      <script type="text/javascript">
+        $(function (){
+          var options = {
+            twitter: {
+              text: '19th century Austrian Administration, Huiiiiiii',
+              via: ''
+            },
+            facebook : true,
+            googlePlus : true
+          };
+          $('.socialShare').shareButtons(options);
+        });
+      </script>
+    <!-- scroll-up-bottom -->
+    <script type="text/javascript">
+            // Setup plugin with default settings
+            $(document).ready(function() {
+                $.apScrollTop({
+                    'onInit': function(evt) {
+                        console.log('apScrollTop: init');
+                    }
                 });
-        </script>
-    {% endblock %}
-  </body>
+            });
+    </script>
+{% endblock %}
+  <!--Particles-->
+  <script type="text/javascript" src="{% static 'blog/js/particles/particles.min.js' %}"></script>
+</body>
 </html>
