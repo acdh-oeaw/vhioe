@@ -9,6 +9,7 @@
             </a>
         </small>
     {% endif %}
+
 {% endblock %}
 
 {% block reset_button %}
@@ -16,6 +17,16 @@
  <p></p> -->
  <a class ="btn btn-default"  href="{% url 'browsing:browse_archivs' %}">Reset search</a>
 {% endblock %}
+
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=name">name</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=akronym">acronym</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=ort">place</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=gnd_id">gnd id</a>
+    
+{% endblock sorting %}
 
 {% block customScripts %}
 <script type="text/javascript">

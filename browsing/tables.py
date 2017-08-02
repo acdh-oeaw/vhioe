@@ -49,7 +49,15 @@ class InstitutionTable(tables.Table):
 
     class Meta:
         models = Institution
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-striped table-condensed mytable"}
+        #mytable!!!!!!!
+
+    # to remove headers
+
+    def __init__(self, *args, **kwargs):
+        super(InstitutionTable, self).__init__(*args, **kwargs)
+        self.show_header = False
+
 
 
 class PersonTable(tables.Table):
