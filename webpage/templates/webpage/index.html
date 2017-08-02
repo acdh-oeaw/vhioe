@@ -2,63 +2,34 @@
 {% load staticfiles %}
 {% load webpage_extras %}
 {% block content %}
-
-
 <div id="content">
-
-
 <div class="container">
 
-  <div class="row">
-  <div class="panel myPanel col-sm-12">
-    <div class="panel-heading myPanelHead">
-      <p>start</p>
-    </div>
-    <div class="panel-body myPanelBody">
-  <h1 style="text-align:center">{% projects_metadata 'title' %}</h1>
-  <h3>{% projects_metadata 'subtitle' %}</h3>
-  <p>{% projects_metadata 'description' %}</p>
-</div>
-</div>
+  <!--main content panel-->
+  <div class="panel index-panel">
+    <div class="panel-body">
+    <!--left column starts here-->
+ <div id="hp-intro-text">
+ <h2>About the project</h2>
+ {% lorem 3 p %}
+ </div>
 
-</div>
-
-<div class="row">
-
-<div class="panel myPanel col-md-5" style="margin: 40px;">
-
-  <div class="panel-heading myPanelHead">
-    <p>start</p>
-  </div>
-  <div class="panel-body myPanelBody">
-<h1 style="text-align:center">{% projects_metadata 'title' %}</h1>
-<h3>{% projects_metadata 'subtitle' %}</h3>
-<p>{% projects_metadata 'description' %}</p>
-</div>
-
-</div>
-
-<div class="panel myPanel col-md-5 pull-right" style="margin: 40px;">
-
-  <div class="panel-heading myPanelHead">
-    <p>start</p>
-  </div>
-  <div class="panel-body myPanelBody">
-    <h1 style="text-align:center">{% projects_metadata 'title' %}</h1>
-    <h3>{% projects_metadata 'subtitle' %}</h3>
-    <p>{% projects_metadata 'description' %}</p>
-  </div>
-
-</div>
-
-</div>
-
-</div>
+ <div id="main">
+      <article> 
+      <h2>Verwaltung und Herrschaft in Österreich</h2>
+      {% lorem %}
+      </article>
+     
+      <aside>Browse the protocols</aside>
+</div><!--main-->
 
 
-</div>
+    </div><!--panel-body-->
+  </div><!--panel myPanel-->
 
 
-</div>
 
+
+</div><!--container-->
+</div><!--content-->
 {% endblock %}

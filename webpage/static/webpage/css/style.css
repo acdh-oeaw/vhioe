@@ -1,66 +1,92 @@
 /* Application styles could go here */
-html{
-    height:100%;
+
+html {
+    height: 100%;
 }
-body{
-    display:flex;
-    flex-direction:column;
-    height:100%;
-    /*font-family: 'Roboto', sans-serif;*/
-    font-size: 16px;
+
+body {
     /*font-family: 'Nunito', sans-serif;*/
     font-family: 'Istok Web', sans-serif;
-    padding-top: 70px;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    padding-top: 90px; /*normally 70px*/
+   /* background: #D7CEC7;*/
+    background: #efefef;
+
+    
 
 }
+
 * {
-  border-radius: 0 !important;
+    border-radius: 0 !important;
 }
-header{
-    flex:0 0 auto;
+
+header {
+    flex: 0 0 auto;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    
 
 }
-.main-content{
-    flex:1 0 auto;
-}
-footer{
-    flex:0 0 auto;
 
-    font-size:13px;
-    padding:20px;
+footer {
+    font-size: 13px;
+
+    right: 0;
     /* position: absolute;*/
-    left:0;
-    right:0;
-    width:100%;
-    margin-top:10px;
+    left: 0;
 
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+
+    flex: 0 0 auto;
 }
+
 .navbar {
-background-color: white;
-/*border: none;*/
-
+    border: none;
+    background-color: white;
 }
+
+
+
+
+
 /*.navbar-brand > img {
   max-width:200px;
   margin-top: -15px;
 
 }*/
+
 .navbar-brand>img {
-      max-height: 100%;
-      height: 100%;
-      margin: 0 auto;
-  }
-.navbar-nav>li>a {
-         padding-top:0px;
-         padding-bottom:0px;
-    }
-  .navbar-brand, .navbar-nav>li>a {
-      height: 67px;
-      line-height: 67px;
-  }
-.navbar-toggle {
-  margin-top: 15px;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
 }
+
+.navbar-nav>li>a {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand,
+.navbar-nav>li>a {
+    line-height: 67px;
+
+    height: 67px;
+}
+
+.navbar-toggle {
+    margin-top: 15px;
+}
+
 #top-procustom-navbar {
     margin: 0;
 }
@@ -68,31 +94,235 @@ background-color: white;
 #top-procustom-navbar.affix {
     position: fixed;
     top: 0;
+
     width: 100%;
 }
 
 #procustom-affix {
-  height: auto;
+    height: auto;
 }
 
 #top-procustom-navbar.mini-nav {
-
-    box-shadow: 0 5px 5px rgba(50, 50, 50, 0.75)
+    box-shadow: 0 5px 5px rgba(50, 50, 50, .75);
 }
+
 #content {
-  background-color: #E8E8E8;
+    
 }
-.myPanel {
-  margin: 10px;
 
-  /*margin: 20px;*/
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+.index-panel {
+    /*margin: 10px;*/
+    /*margin: 20px;*/
+    /*box-shadow: 0 12px 16px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);*/
+    /*background-color: #e8e8e8;*/
+    /*text-align: justify;*/
+    height: 100%;
+    /*background-color: transparent;*/
+
 }
 
 .myPanelHead {
-border-bottom: 1px solid black;
-text-align: center;
-}
-.myPanelBody {
+    text-align: center;
 
+    border-bottom: 1px solid black;
+}
+
+.navbar-nav.navbar-right:last-child {
+    /*dirty fix due to https://github.com/twbs/bootstrap/issues/18362*/
+    margin-right: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .navbar-right {
+        float: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,
+    .navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in {
+        display: block !important;
+    }
+}
+
+
+
+
+/*Basic Grid Styles*/
+/*.grid {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center; 
+   
+}
+
+.grid-item {
+    flex: 1;
+}
+*/
+#hp-intro-text {
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 20px;
+  /*border: 1px solid black;*/
+
+}
+
+
+
+
+ #main {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-flow: row;
+    flex: 1 0 0%;
+
+    
+   
+}
+
+#main>article {
+    height: 100%;
+    height: 100%;
+    margin: 10px;
+    padding: 20px;
+    /*border: 1px solid black;*/
+    /*border-radius: 7pt;*/
+    background: #fff;
+
+    flex: 3 1 60%;
+    order: 1;
+}
+
+
+
+#main>aside {
+    height: 100%;
+    margin: 10px;
+    padding: 20px;
+    /*border: 1px solid black;*/
+    /*border-radius: 7pt;*/
+    background: #fff;
+
+    flex: 1 6 20%;
+    order: 2;
+}
+
+
+
+/* Too narrow to support three columns */
+
+@media all and (max-width: 640px) {
+    #main {
+        display: block;
+        flex-direction: column;
+    }
+
+    #main>article,
+    #main>aside {
+        margin: 10px;
+        padding: 20px;
+        /* Return them to document order */
+        order: 0;
+    }
+
+    #main>aside {
+        min-height: auto;
+        max-height: auto;
+    }
+}
+
+#myNavbar>ul>li>a:hover {
+    border-bottom: 3px solid #76323f;
+}
+#main-browse-list {
+   display: flex;
+
+  
+    margin: 0;
+    padding: 0;
+
+    flex-flow: row;
+    flex: 1 0 0%;
+
+}
+#main-browse-list > .search-panel {
+ height: 100%;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    /*border-radius: 7pt;*/
+    background: #fff;
+
+    flex: 1 6 30%;
+    order: 1;
+
+}
+#main-browse-list > .results-panel {
+   height: 100%;
+    height: 100%;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    /*border-radius: 7pt;*/
+    background: #fff;
+
+    flex: 3 1 50%;
+    order: 2;
+  
+}
+
+@media all and (max-width: 640px) {
+    #main-browse-list {
+        display: block;
+        flex-direction: column;
+    }
+
+    #main-browse-list>.results-panel,
+    #main-browse-list>.search-panel {
+        margin: 10px;
+        padding: 20px;
+        /* Return them to document order */
+        order: 0;
+    }
+
+    #main-browse-list>.search-panel {
+        min-height: auto;
+        max-height: auto;
+    }
 }

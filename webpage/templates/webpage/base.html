@@ -72,21 +72,18 @@
 <body>
   <header>
     <nav class="navbar navbar-default navbar-fixed-top" id="top-procustom-navbar">
-      <div class="container">
-
+     <!--  <div class="container"> -->
         <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-
               <a class="navbar-brand" href="/">
                 <img id="vhioe-brand-logo"
                     src="{% static 'webpage/img/logo5oxblood_transparent.png' %}" alt="VHIOE">
               </a>
         </div>
-
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li class="dropdown">
@@ -114,7 +111,6 @@
                   <span class="caret"/>
                   </a>
                   <ul class="dropdown-menu">
-
                     <li>
                         <a href="{% url 'browsing:browse_entries' %}">Einträge</a>
                     </li>
@@ -176,7 +172,6 @@
                   </ul>
                 </li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     {% if user.is_authenticated %}
@@ -197,52 +192,35 @@
                     {% endif %}
                 </li>
             </ul>
-
-
-
         </div>
-      </div>
+     <!--  </div> --><!--container-->
     </nav>
   </header>
-
-
-
-
   <section class="main-content">
-
-
           {% block content %}
           {% endblock %}
-
   </section>
-
-
 <footer>
 <p> copyright oeaw </p>
 </footer>
-
 {% block scripts %}
     <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap.min.js' %}"></script>
     <!-- <script type="text/javascript" src="{% static 'webpage/libraries/bootstrap337/js/bootstrap-tab.js' %}"></script> -->
-
-    <script type="text/javascript">
-        var nav = $('#top-procustom-navbar'); // Change to nav div
-        var nav_class = 'mini-nav'; // Change to class name
-        var threshold = 100; // Change to pixels scrolled
-
-        $(window).scroll(function () {
-        var distance = $(this).scrollTop();
-            if (distance > threshold) { // If scrolled past threshold
-                nav.addClass(nav_class); // Add class to nav
-            } else { // If user scrolls back to top
-                if (nav.hasClass(nav_class)) { // And if class has been added
-                    nav.removeClass(nav_class); // Remove it
-                }
-            }
-        });
-    </script>
-
-
+  <script type="text/javascript">
+    var nav = $('#top-procustom-navbar'); // Change to nav div
+    var nav_class = 'mini-nav'; // Change to class name
+    var threshold = 100; // Change to pixels scrolled
+    $(window).scroll(function() {
+    var distance = $(this).scrollTop();
+    if (distance > threshold) { // If scrolled past threshold
+        nav.addClass(nav_class); // Add class to nav
+    } else { // If user scrolls back to top
+        if (nav.hasClass(nav_class)) { // And if class has been added
+            nav.removeClass(nav_class); // Remove it
+        }
+    }
+});
+</script>
     <!-- cool share -->
       <script type="text/javascript">
         $(function (){
