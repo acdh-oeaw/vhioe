@@ -3,7 +3,8 @@
 {% load webpage_extras %}
 {% block content %}
 <div id="content">
-<div class="container">
+
+
 
   <!--main content panel-->
   <div class="panel index-panel">
@@ -11,13 +12,17 @@
     <!--left column starts here-->
  <div id="hp-intro-text">
  <h2>About the project</h2>
- {% lorem 3 p %}
+ <hr class="h-hr">
+ <p>{% lorem %}</p>
+ <p>{% lorem %}</p>
  </div>
 
  <div id="main">
       <article> 
       <h2>Verwaltung und Herrschaft in Österreich</h2>
-      {% lorem %}
+      <hr class="h-hr">
+      <p>{% lorem %}</p>
+
       </article>
      
       <aside>Browse the protocols</aside>
@@ -30,6 +35,5 @@
 
 
 
-</div><!--container-->
 </div><!--content-->
 {% endblock %}

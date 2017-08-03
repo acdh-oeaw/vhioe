@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<div class="panel panel-default">
+<div class="panel panel-default detail-panel">
     <div class="panel-heading" style="text-align: center;">
-        <h3>Detail view of</h3>
-        <h1>{{ object }}</h1>
+        <h2>Detail view of</h2>
+        <h2>{{ object }}</h2>
+        <hr class="h-hr">
          {% if user.is_authenticated %}
             <a href="{% url 'entries:eintrag_update' pk=object.id %}">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="edit">
@@ -83,13 +84,11 @@
             </tr>
         </table>
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 
 {% if user.is_authenticated %}
-<a class="btn btn-primary" href="{% url 'entries:eintrag_update' pk=object.id %}" role="button">edit Eintrag</a>
-<a class="btn btn-danger" href="{% url 'entries:eintrag_delete' pk=object.id %}" role="button">delete Eintrag</a>
+<!-- <a class="btn btn-primary" href="{% url 'entries:eintrag_update' pk=object.id %}" role="button">edit Eintrag</a>
+<a class="btn btn-danger" href="{% url 'entries:eintrag_delete' pk=object.id %}" role="button">delete Eintrag</a> -->
 {% endif %}
 {% endblock %}

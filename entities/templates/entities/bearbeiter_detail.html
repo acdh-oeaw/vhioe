@@ -2,15 +2,15 @@
 {% block Titel %} {{object}} {% endblock %}
 
 {% block content %}
-    <div class="panel panel-default">
+    <div class="panel panel-default detail-panel">
         <div class="panel-heading" style="text-align: center;">
-            <h3>Detail view of</h3>
-            <h1>{{ object }}</h1>
+            <h2>Detail view of</h2>
+            <h2>{{ object }}</h2>
+            <hr class="h-hr">
              {% if user.is_authenticated %}
                 <a href="{% url 'entities:bearbeiter_edit' pk=object.id %}">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true" title="edit">
                 </a>
-                |
                 <a href="{% url 'entities:bearbeiter_delete' pk=object.id %}">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true" title="delete">
                 </a>
@@ -19,11 +19,17 @@
         <div class="panel-body">
             <table class="table table-bordered">
                 <tr>
-                    <td>Name, Vorname</td>
-                    <td>{{ object.name }}, {{ object.name }}</td>
+                    <td class="col-sm-3">Name, Vorname</td>
+                    <td>{{ object.vorname }} {{ object.name }}</td>
+                </tr>
+                 <tr>
+                    <td>Gender</td>
+                    <td>
+                        {{ object.sex }}
+                    </td>
                 </tr>
                 <tr>
-                    <td>Institution(en)</td>
+                    <td class="col-sm-3">Institution(en)</td>
                     <td>
                         {% for x in object.institution.all %}
                             {{ x }}
@@ -49,7 +55,7 @@
                 {% endif %}
                 {% if object.beruf %}
                     <tr>
-                        <td>Beruf</td>
+                        <td class="col-sm-3">Beruf</td>
                         <td>
                             {{ object.beruf }}
                             {% if user.is_authenticated %}
@@ -61,16 +67,13 @@
                     </tr>
                 {% endif %}
                 <tr>
-                    <td>GND-ID</td>
+                    <td class="col-sm-3">GND-ID</td>
                     <td>
                         {{ object.gnd_id }}
                     </td>
                 </tr>
 
             </table>
-        </div>
-        <div class="panel-footer">
-
         </div>
     </div>
 {% endblock %}
