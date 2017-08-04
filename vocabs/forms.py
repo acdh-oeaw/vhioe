@@ -11,7 +11,7 @@ class GenericFilterFormHelper(FormHelper):
         self.helper = FormHelper()
         self.form_class = 'genericFilterForm'
         self.form_method = 'GET'
-        self.add_input(Submit('Filter', 'search'))
+        self.add_input(Submit('Filter', 'Search'))
 
 
 class UploadFileForm(forms.Form):

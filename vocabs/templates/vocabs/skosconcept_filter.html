@@ -1,5 +1,5 @@
 {% extends "browsing/generic_list.html" %}
-{% block list_title %}Browse SkosConcepts{% endblock %}
+{% block list_title %}Explore SkosConcepts{% endblock %}
 
 {% block create_button %}
 {% if user.is_authenticated %}
@@ -11,5 +11,14 @@
 
 
 {% block reset_button %}
- <a class ="btn btn-default"  href="{% url 'vocabs:browse_vocabs' %}">reset search</a>
+ <a class ="btn btn-default"  href="{% url 'vocabs:browse_vocabs' %}">Reset search</a>
 {% endblock %}
+
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=pref_label">prefLabel</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_institutions' %}?sort=namespace">namespace</a>
+   
+    
+{% endblock sorting %}

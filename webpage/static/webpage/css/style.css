@@ -437,7 +437,7 @@ legend {
     border-bottom: none;
 }
 
-.detail-panel {
+.detail-panel, .procustom-panel-create, .procustom-panel-list {
     box-shadow: 2px 2px 24px 0 rgba(0, 0, 0, .1);
 }
 
