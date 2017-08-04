@@ -17,6 +17,16 @@
  <a class ="btn btn-default"  href="{% url 'browsing:browse_entries' %}">Reset search</a>
 {% endblock %}
 
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_entries' %}?sort=aktenzahl">akteneintrag</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_entries' %}?sort=band_archiv">archiv</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_entries' %}?sort=band">band</a>
+   
+    
+{% endblock sorting %}
+
 {% block customScripts %}
 <script type="text/javascript">
 $(document).ready(function(){

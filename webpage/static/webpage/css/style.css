@@ -401,7 +401,6 @@ footer {
 
 .sorting-item {
     padding: 5px;
-
     color: #fff;
     background: #565656;
 }
@@ -409,11 +408,13 @@ footer {
 .sorting-item:hover,
 .sorting-item:focus {
     color: #fff;
+    text-decoration: none;
+
 }
 
 .results-item-card {
     margin: 5px;
-    padding: 10px;
+    padding: 5px;
 
     border: 1px solid #565656;
 }
@@ -441,4 +442,7 @@ legend {
     text-align: justify;
     margin: 10px;
     padding: 20px;
+}
+.mytable > thead > tr {
+    color: green;
 }

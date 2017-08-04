@@ -1,10 +1,19 @@
 {% extends "webpage/base.html" %}
 {% load staticfiles %}
 {% load webpage_extras %}
+
+
+{% block hp-image %}
+<div class="fill">
+    
+  </div>
+{% endblock %}
+
+
+
 {% block content %}
+
 <div id="content">
-
-
 
   <!--main content panel-->
   <div class="panel index-panel">
@@ -36,4 +45,12 @@
 
 
 </div><!--content-->
+<script>
+// $(window).load(function(){
+//  $('.jumbotron').find('img').each(function(){
+//   var imgClass = (this.width/this.height > 1) ? 'wide' : 'tall';
+//   $(this).addClass(imgClass);
+//  })
+// })
+</script>
 {% endblock %}

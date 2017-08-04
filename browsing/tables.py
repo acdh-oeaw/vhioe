@@ -14,7 +14,7 @@ class EintragTable(tables.Table):
 
     class Meta:
         models = Eintrag
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-condensed"}
 
 
 class BandTable(tables.Table):
@@ -25,7 +25,7 @@ class BandTable(tables.Table):
 
     class Meta:
         models = Band
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-condensed"}
 
 
 class ArchivTable(tables.Table):
@@ -33,11 +33,11 @@ class ArchivTable(tables.Table):
         'entities:archiv_detail', args=[A('pk')], verbose_name='Name')
     akronym = tables.Column(accessor="akronym")
     ort = tables.Column(accessor="ort")
-    gnd_id = tables.Column(accessor="gnd_id")
+    # gnd_id = tables.Column(accessor="gnd_id")
 
     class Meta:
         models = Archiv
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-condensed"}
 
 
 class InstitutionTable(tables.Table):
@@ -45,44 +45,49 @@ class InstitutionTable(tables.Table):
         'entities:institution_detail', args=[A('pk')], verbose_name='Name')
     akronym = tables.Column(accessor="akronym")
     ort = tables.Column(accessor="ort")
-    gnd_id = tables.Column(accessor="gnd_id")
+    # gnd_id = tables.Column(accessor="gnd_id")
 
     class Meta:
         models = Institution
-        attrs = {"class": "table table-hover table-striped table-condensed mytable"}
+        attrs = {"class": "table table-hover table-condensed mytable"}
         #mytable!!!!!!!
 
     # to remove headers
 
-    def __init__(self, *args, **kwargs):
-        super(InstitutionTable, self).__init__(*args, **kwargs)
-        self.show_header = False
+    # def __init__(self, *args, **kwargs):
+    #     super(InstitutionTable, self).__init__(*args, **kwargs)
+    #     self.show_header = False
 
 
 
 class PersonTable(tables.Table):
     name = tables.LinkColumn('entities:person_detail', args=[A('pk')], verbose_name='Name ')
     vorname = tables.Column(accessor="vorname")
-    sex = tables.Column(accessor="sex")
+    # sex = tables.Column(accessor="sex")
     beruf = tables.Column(accessor="beruf")
     ort = tables.Column(accessor="ort")
-    gnd_id = tables.Column(accessor="gnd_id")
+    # gnd_id = tables.Column(accessor="gnd_id")
 
     class Meta:
         models = Person
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-condensed"}
 
 
 class BearbeiterTable(tables.Table):
     name = tables.LinkColumn('entities:bearbeiter_detail', args=[A('pk')], verbose_name='Name ')
     vorname = tables.Column(accessor="vorname")
     bearbeiter_kuerzel = tables.Column(accessor="bearbeiter_kuerzel")
-    institution = tables.Column(accessor="institution")
-    sex = tables.Column(accessor="sex")
+    institution = tables.Column(accessor="institution", empty_values=())
+    # sex = tables.Column(accessor="sex")
     beruf = tables.Column(accessor="beruf")
     ort = tables.Column(accessor="ort")
-    gnd_id = tables.Column(accessor="gnd_id")
+    # gnd_id = tables.Column(accessor="gnd_id")
+
+    def render_institution(self, record):
+        if record.institution.all():
+            return ', '.join([institution.name for institution in record.institution.all()])
+        return '-'
 
     class Meta:
         models = Bearbeiter
-        attrs = {"class": "table table-hover table-striped table-condensed"}
+        attrs = {"class": "table table-hover table-condensed"}

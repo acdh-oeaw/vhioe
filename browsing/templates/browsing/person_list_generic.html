@@ -14,6 +14,16 @@
  <a class ="btn btn-default"  href="{% url 'browsing:browse_persons' %}">Reset search</a>
 {% endblock %}
 
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_persons' %}?sort=name">name</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_persons' %}?sort=vorname">vorname</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_persons' %}?sort=beruf">beruf</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_persons' %}?sort=ort">ort</a>
+    
+{% endblock sorting %}
+
 {% block customScripts %}
 <script type="text/javascript">
 $(document).ready(function(){

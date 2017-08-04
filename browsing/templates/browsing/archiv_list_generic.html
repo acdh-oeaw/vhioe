@@ -17,6 +17,15 @@
  <a class ="btn btn-default"  href="{% url 'browsing:browse_archivs' %}">Reset search</a>
 {% endblock %}
 
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_archivs' %}?sort=name">name</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_archivs' %}?sort=akronym">akronym</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_archivs' %}?sort=ort">ort</a>
+    
+{% endblock sorting %}
+
 {% block customScripts %}
 <script type="text/javascript">
 $(document).ready(function(){

@@ -17,6 +17,16 @@
  <a class ="btn btn-default"  href="{% url 'browsing:browse_baende' %}">Reset search</a>
 {% endblock %}
 
+{% block sorting %}
+<b>sort by: </b>
+
+    <a class="sorting-item" href="{% url 'browsing:browse_baende' %}?sort=id">band</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_baende' %}?sort=archiv">archiv</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_baende' %}?sort=bestand">bestand</a>
+    <a class="sorting-item" href="{% url 'browsing:browse_baende' %}?sort=jahr">jahr</a>
+    
+{% endblock sorting %}
+
 {% block customScripts %}
 <script type="text/javascript">
 $(document).ready(function(){
