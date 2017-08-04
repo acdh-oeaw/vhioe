@@ -1,6 +1,6 @@
 {% extends "browsing/generic_list.html" %}
-{% block Titel %}Browse Bände{% endblock %}
-{% block list_title %}Browse Bände
+{% block Titel %}Explore Bände{% endblock %}
+{% block list_title %}Explore Bände
  {% if user.is_authenticated %}
         | <a class ="btn btn-success"  href="{% url 'entries:band_create' %}">Create new Band</a>
     {% endif %}

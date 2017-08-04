@@ -36,6 +36,7 @@ header {
 }
 
 
+
 /*div.jumbotron {
   background-image: url(http://www.bildarchivaustria.at/Preview/12886425.jpg);
   background-position: 0% 60%;
@@ -101,6 +102,7 @@ footer {
 
 
 
+
 /*.navbar-brand > img {
   max-width:200px;
   margin-top: -15px;
@@ -157,8 +159,9 @@ footer {
     /*background-color: #e8e8e8;*/
     /*text-align: justify;*/
     height: 100%;
-    box-shadow: none;
+
     background-color: transparent;
+    box-shadow: none;
 }
 
 .myPanelHead {
@@ -222,6 +225,7 @@ footer {
 
 
 
+
 /*Basic Grid Styles*/
 
 
@@ -277,7 +281,7 @@ footer {
 #main>article>h2,
 #hp-intro-text>h2,
 .panel-default>.panel-heading>h2,
-.panel-default > .imprint > h2 {
+.panel-default>.imprint>h2 {
     font-family: 'EB Garamond', serif;
     font-size: 250%;
 }
@@ -312,6 +316,7 @@ footer {
     flex: 1 6 20%;
     order: 2;
 }
+
 
 
 
@@ -400,16 +405,19 @@ footer {
 }
 
 .sorting-item {
+    line-height: 250%;
+
     padding: 5px;
+
     color: #fff;
     background: #565656;
 }
 
 .sorting-item:hover,
 .sorting-item:focus {
-    color: #fff;
     text-decoration: none;
 
+    color: #fff;
 }
 
 .results-item-card {
@@ -435,14 +443,13 @@ legend {
 
 .panel {
     border: 0;
-    
 }
+
 .panel-default>.imprint {
     line-height: 200%;
-    text-align: justify;
+
     margin: 10px;
     padding: 20px;
-}
-.mytable > thead > tr {
-    color: green;
+
+    text-align: justify;
 }

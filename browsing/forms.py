@@ -8,4 +8,4 @@ class GenericFilterFormHelper(FormHelper):
         self.helper = FormHelper()
         self.form_class = 'genericFilterForm'
         self.form_method = 'GET'
-        self.add_input(Submit('Filter', 'Filter'))
+        self.add_input(Submit('Search', 'Search'))

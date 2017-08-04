@@ -2,7 +2,12 @@
 {% load staticfiles %}
 {% load django_tables2 %}
 {% load i18n %}
-{% block Titel %} See all {{ object.classname }} {% endblock %}
+
+
+{% block Titel %} 
+See all {{ object.classname }} 
+{% endblock %}
+
 {% block scriptHeader %}
 
 {% endblock %}
@@ -36,8 +41,10 @@ $("#goto option").each(function() {
     </div>
 
     <div id="main-browse-list">
+
  
             <div class="search-panel">
+            <p>Refine your search</p>
                 {% load django_tables2 crispy_forms_tags %}
                 {% crispy filter.form filter.form.helper %}
                 {% block reset_button %}

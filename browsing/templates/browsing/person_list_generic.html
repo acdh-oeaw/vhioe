@@ -1,10 +1,14 @@
 {% extends "browsing/generic_list.html" %}
-{% block Titel %}Browse Persons{% endblock %}
-{% block list_title %}Browse Persons
+{% block Titel %}Explore Persons{% endblock %}
+{% block list_title %}Explore Persons
     {% if user.is_authenticated %}
-        <a href="{% url 'entities:person_create' %}">
+    |
+     <small>
+            <a href="{% url 'entities:person_create' %}">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" title="neues Object anlegen">
         </a>
+        </small>
+       
     {% endif %}
 {% endblock %}
 

@@ -49,8 +49,7 @@ class InstitutionTable(tables.Table):
 
     class Meta:
         models = Institution
-        attrs = {"class": "table table-hover table-condensed mytable"}
-        #mytable!!!!!!!
+        attrs = {"class": "table table-hover table-condensed"}
 
     # to remove headers
 

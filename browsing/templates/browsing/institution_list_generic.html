@@ -1,6 +1,10 @@
 {% extends "browsing/generic_list.html" %}
-{% block Titel %}Browse Institutions{% endblock %}
-{% block list_title %}Browse Institutions
+
+{% block Titel %}Explore Institutions{% endblock %}
+
+{% block list_title %}
+
+Explore Institutions
     {% if user.is_authenticated %}
         |
         <small>
@@ -9,6 +13,7 @@
             </a>
         </small>
     {% endif %}
+
 
 {% endblock %}
 
