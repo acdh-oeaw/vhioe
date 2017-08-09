@@ -4,9 +4,13 @@
 
 
 {% block hp-image %}
-<div class="fill">
-    
-  </div>
+
+<div class="index-image" style="background-image: url({% static 'webpage/img/D16_735_B_Alt_Rudolf_von.jpg' %})" alt="Alt, Rudolf von. 'Der alte Wiener Südbahnhof'. Aquarell auf Papier, signiert. um 1860. Wien. ÖNB, D 16.735 - B" title="Alt, Rudolf von. 'Der alte Wiener Südbahnhof'. Aquarell auf Papier, signiert. um 1860. Wien. ÖNB, D 16.735 - B">
+<span class="index-image-caption">
+<strong>Photo credit</strong>: Alt, Rudolf von. "Der alte Wiener Südbahnhof". Aquarell auf Papier, signiert. um 1860. Wien. <em>ÖNB</em>, <a href="http://www.bildarchivaustria.at/Pages/ImageDetail.aspx?p_iBildID=13167678"><em>D 16.735 - B</em></a>
+</span>
+</div>
+
 {% endblock %}
 
 
@@ -17,40 +21,37 @@
 
   <!--main content panel-->
   <div class="panel index-panel">
-    <div class="panel-body">
-    <!--left column starts here-->
- <div id="hp-intro-text">
- <h2>About the project</h2>
- <hr class="h-hr">
- <p>{% lorem %}</p>
- <p>{% lorem %}</p>
- </div>
+   <div class="panel-body">
 
- <div id="main">
-      <article> 
-      <h2>Verwaltung und Herrschaft in Österreich</h2>
-      <hr class="h-hr">
-      <p>{% lorem %}</p>
+    <div class="top-main-section" id="hp-intro-text" >
+        <h2>About the project</h2>
+        <hr class="h-hr">
+        <p>{% lorem %}</p>
+        <p>{% lorem %}</p>
+    </div>
 
-      </article>
-     
-      <aside>Browse the protocols</aside>
-</div><!--main-->
+    <div id="hp-main" class="main-flexbox">
+        <article>
+            <h2>Verwaltung und Herrschaft in Österreich</h2>
+            <hr class="h-hr">
+            <p>{% lorem %}</p>
+        </article>
+        <aside id="browse-p">
+        <h3>Browse the protocols</h3>
+        <br>
+        <a href="{% url 'browsing:browse_entries' %}" id="test"><i class="material-icons" id="arrow-icon" style="color: #fff; float: right;">arrow_forward</i></a>
+        <br>
 
 
-    </div><!--panel-body-->
-  </div><!--panel myPanel-->
+        </aside>
+    </div>
+    <!--main-->
+   </div><!--panel-body-->
+  </div><!--panel index-panel-->
 
 
 
 
 </div><!--content-->
-<script>
-// $(window).load(function(){
-//  $('.jumbotron').find('img').each(function(){
-//   var imgClass = (this.width/this.height > 1) ? 'wide' : 'tall';
-//   $(this).addClass(imgClass);
-//  })
-// })
-</script>
+
 {% endblock %}
